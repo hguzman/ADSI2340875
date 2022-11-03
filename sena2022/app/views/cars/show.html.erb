@@ -1,0 +1,15 @@
+<p><strong>Placa: </strong> <%= @car.placa %></p>
+<p><strong>Color: </strong> <%= @car.color %></p>
+<p><strong>Modelo: </strong> <%= @car.modelo %></p>
+<p><strong>Marca: </strong> <%= @car.marca.nombre %></p>
+<p><strong>Motor: </strong> <%= @car.motor %></p>
+<p>
+    <%= image_tag(@car.avatar_url) if @car.avatar? %>
+</p>
+
+
+<hr>
+<%= link_to "Nuevo", new_car_path %> | 
+<%= link_to "Todos", cars_path %> | 
+<%= link_to "Editar", edit_car_path(@car) %> | 
+<%= link_to "Eliminar", car_path(@car), method: :delete %>

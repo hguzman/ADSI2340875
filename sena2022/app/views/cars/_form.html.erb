@@ -1,0 +1,9 @@
+<%= simple_form_for @car do |f| %>
+  <%= f.input :placa %>
+  <%= f.association :marca, label_method: :nombre %>
+  <%= f.input :color %>
+  <%= f.input :modelo %>
+  <%= f.input :motor %>
+  <%= f.input :avatar %>
+  <%= f.button :submit %>
+<% end %>
