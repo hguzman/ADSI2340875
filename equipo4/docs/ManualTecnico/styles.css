@@ -1,0 +1,69 @@
+main{
+  border: 1px solid #000;
+  width: 700px;
+  height: 800px;
+  text-align: center;
+  
+}
+
+#main2{
+  margin-top: 10px;
+  border: 1px solid #000;
+  width: 700px;
+  height: 880px;
+  
+}
+#main3{
+  margin-top: 10px;
+  border: 1px solid #000;
+  width: 700px;
+  height: 880px;
+}
+h2{
+  margin-right: 500px;
+}
+
+
+
+img{
+    margin-top: 40px;
+    width: 200px;
+    height: 200px;
+    
+}
+
+
+hr{
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  color: blue;
+}
+
+#par1{
+ margin-top: 355px;
+}
+
+#fin{
+  margin-top: 200px;
+
+}
+
+
+#txt3{
+  display: inline-block;
+}
+
+#txt4{
+  display: inline-block;
+}
+#des{
+  margin-top: 10px;
+  margin-right: 500px;
+  display: block;
+}
+
+#icone{
+  width: 600px;
+  height: 350px;
+}
