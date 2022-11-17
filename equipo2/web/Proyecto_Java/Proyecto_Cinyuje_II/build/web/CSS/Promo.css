@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6/11/2022, 11:58:44 AM
+    Author     : User
+*/
+
+.card-header{
+    background-color: #a99ed7;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.card-footer{
+    background-color: #6858d0;
+    color: white;
+}
+
+.navbar-nav{
+    color: black;
+}
+
+#tarjetas{
+    margin-top: 20px;
+}
+
+#precio{
+    background-color: #fcb334;
+    margin-top: 30px;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100px;
+    margin-left: 100px;
+    border-radius: 10px;
+    
+}
+
