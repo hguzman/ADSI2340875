@@ -1,0 +1,43 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8/11/2022, 07:49:37 AM
+    Author     : HPLAPTOP01
+*/
+
+body{
+   
+}
+
+#login{
+    background-image: url("../Imagenes/login_background.JPG");
+    
+}
+
+h3{
+    font-size: 19px;
+    color: gray;
+    
+}
+
+button{
+    font-size: 17px;
+    width: 200px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #7337c8;
+    color: white;
+    border: none;
+    margin-left: 25px;
+    
+}
+
+button:hover{
+    color: white;
+   
+    
+}
+
