@@ -1,5 +1,8 @@
-import 'package:cinyuje/pages/page1.dart';
-import 'package:cinyuje/pages/page2.dart';
+
+import 'package:cinyuje/pages/inicio.dart';
+import 'package:cinyuje/pages/login.dart';
+import 'package:cinyuje/pages/formulario.dart';
+import 'package:cinyuje/pages/page3.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,80 +14,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Cinyuje",
-      color: Color.fromARGB(0, 52, 130, 194),
-      home: Sena(),
+      //color: Color.fromARGB(0, 52, 130, 194),
+      //home: Sena() ,
+      initialRoute: '/',
+      routes: {
+        '/': (BuildContext context)=> Sena(),
+        '/login': (BuildContext context)=> Login(),
+        '/page2': (BuildContext context)=> Pap(),
+        '/page3': (BuildContext context)=> Page3(),
+      },
     );
   }
  
-}
-
-class Sena extends StatefulWidget {
-  @override
-  State<Sena> createState() => _SenaState();
-}
-
-class _SenaState extends State<Sena> {
-  int page = 0;
-  final PageController pageController = new PageController( initialPage: 0);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Welcome Proyect Cinyuje')),
-        backgroundColor: Color.fromARGB(129, 3, 29, 58),
-        actions: [
-          IconButton(
-            onPressed: _add, 
-            icon: Icon(Icons.verified_user_outlined))
-        ],
-        //leading: IconButton(
-          //onPressed: _add,
-          //icon: Icon(Icons.arrow_back),)
-      ),
-      body:        
-          PageView(
-            controller: pageController,
-            physics: NeverScrollableScrollPhysics(),
-            children: [
-              Page1(),
-              Page2(color: Colors.grey),
-              Page2(color: Color.fromARGB(255, 18, 72, 219)),
-            ],
-          ),
-        
-      
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: page,
-        onTap: (index) {
-          page = index;
-          pageController.animateToPage(index,
-          duration: Duration(seconds: 2),curve: Curves.easeInOutCubic );
-
-          setState(() {
-            
-          });
-        },
-        backgroundColor: Colors.grey,
-        selectedItemColor: Colors.blue,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.pages_outlined),
-          label: 'user'
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.pageview),
-          label: 'Home'
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.pageview),
-          label: 'Page'
-          ),
-         ]
-        ),
-        drawer: Drawer(),
-    );
-  }
-
-  void _add() {
-    print("hola");
-  }
 }
