@@ -18,7 +18,7 @@ class Draws extends StatelessWidget {
               ],
               onDetailsPressed: () {},
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [Colors.blue,Colors.black],
+                gradient: LinearGradient(colors: [Color.fromARGB(255, 55, 6, 100),Colors.black],
                   end: Alignment.bottomRight)
               ),
             ),
