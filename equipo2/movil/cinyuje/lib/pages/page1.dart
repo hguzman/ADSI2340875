@@ -33,8 +33,11 @@ class _Page1State extends State<Page1> {
             Row(             
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children:[
+                OutlinedButton(
+                  onPressed: () => _showdialog(context), 
+                  child: 
                 Container(
-                  margin: EdgeInsets.all(20.0),
+                  margin: EdgeInsets.all(10.0),
                   width: 100,
                   height: 100,
                   decoration: BoxDecoration(
@@ -45,7 +48,11 @@ class _Page1State extends State<Page1> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Image(image: AssetImage('images/Categoriag.png')),
+                )
                 ),
+                OutlinedButton(
+                  onPressed: () => _dialog(context), 
+                  child:
                 Container(
                   margin: EdgeInsets.all(10.0),
                   width: 100,
@@ -59,6 +66,7 @@ class _Page1State extends State<Page1> {
                   ),
                   child: Image(image: AssetImage('images/Categoria_3.png')),
                 ),
+                )
               ]
             ),
             Row(
@@ -68,7 +76,7 @@ class _Page1State extends State<Page1> {
                   nombre: 'Globos',
                   imagen: 'images/globos.jpg',
                   descripcion: 'Lleva tus globos para las fiestas',),
-                  Decoracion(
+                Decoracion(
                   nombre: 'Canguros',
                   imagen: 'images/Canguro.png',
                   descripcion: 'Canguros para tus niños en el colegio',),
@@ -88,6 +96,7 @@ class _Page1State extends State<Page1> {
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Decoracion(
                   nombre: 'Minions',
@@ -108,6 +117,48 @@ class _Page1State extends State<Page1> {
         //child: Icon(Icons.pages),
         //onPressed: camcioimage
       //),   
+    );
+  }
+
+  void _showdialog(BuildContext context){
+    showDialog(
+      context: context, 
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: Text('Categoria'),
+          children: [
+            ListTile(
+              title: Text('Decoraciones'),
+              subtitle: Text('Aqui encontraras todo para tus fiestas'),
+              leading: Icon(Icons.image),
+              onTap: () {
+                Navigator.pushNamed(context, '/decoracion');
+              },
+            )
+          ],
+        );
+      }
+    );
+  }
+
+  void _dialog(BuildContext context){
+    showDialog(
+      context: context, 
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: Text('Categoria'),
+          children: [
+            ListTile(
+              title: Text('RECORDATORIOS'),
+              subtitle: Text('Tus mejores recordatorios para fiestas'),
+              leading: Icon(Icons.image),
+              onTap: () {
+                Navigator.pushNamed(context, '/recordatorio');
+              },
+            )
+          ],
+        );
+      }
     );
   }
 

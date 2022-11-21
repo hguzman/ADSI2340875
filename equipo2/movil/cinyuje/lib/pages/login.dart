@@ -1,59 +1,73 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
  
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   String? namevaleu;
+  bool loading = false;
   String? lastnamevaleu;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      appBar: AppBar(
-        title: Center(child: Text('LOGIN')),
-        backgroundColor: Color.fromARGB(129, 3, 29, 58),
-      ),
-      body: Container(
-        child: Column(
-          children: [
-            //Image(image: AssetImage('images/cake_backg.jpg')),
-              Center(
-                child: Container(
-                  color: Color.fromARGB(255, 201, 225, 245),
-                  width: 300,
-                  child: Column(
-                    children: [                 
-                      Image(image: AssetImage('images/logo_oscuro.png')),
-                      TextFormField(
-                      decoration: InputDecoration(labelText: 'Usuario'),
-                      onSaved: (value) {
-                        namevaleu = value;
-                      },
-                      validator: (value) {
-                        if(value!.isEmpty){
-                          return 'no aceptan campos vacios';
-                        }
-                      },             
+      body: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.cyan.shade300,
+                  Colors.cyan.shade800,
+                ]
+              )
+            ),
+            child: Image.asset(
+              'images/logo_oscuro.png',
+              height: 200,
+              ),           
+          ),
+          Center(
+            child: Card(
+              margin: EdgeInsets.only(left: 20, right: 20,top: 260),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Usuario:'),
+                    ),
+                    SizedBox(height: 40,),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Usuario:'),
+                      obscureText: true,
+                    ),
+                    OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Color(0xFF4DD0E1))
                       ),
-                      TextFormField(
-                          decoration: InputDecoration(labelText: 'Password'),
-                          
-                          onSaved: (value) {
-                            lastnamevaleu = value;
-                          },
-                          validator: (value) {
-                            if(value!.isEmpty){
-                              return 'no aceptan campos vacios';
-                            }
-                          },
-                      ),
-                    ],
-                  ),
+                      onPressed: () { }, 
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Inicio de Seccion',style: TextStyle(color: Colors.white),),
+                        ],
+                      )
+                      )
+                  ],
                 ),
               ),
-          ]
-        )
+            ),
+          )
+        ],
       )
     );
   }

@@ -1,4 +1,6 @@
 
+import 'package:cinyuje/pages/categorias/decoracion.dart';
+import 'package:cinyuje/pages/categorias/recordatorios.dart';
 import 'package:cinyuje/pages/inicio.dart';
 import 'package:cinyuje/pages/login.dart';
 import 'package:cinyuje/pages/formulario.dart';
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
         '/login': (BuildContext context)=> Login(),
         '/page2': (BuildContext context)=> Pap(),
         '/page3': (BuildContext context)=> Page3(),
+        '/decoracion': (BuildContext context)=> Decorar(),
+        '/recordatorio': (BuildContext context)=> Record(),
       },
     );
   }
