@@ -30,10 +30,10 @@
                 <div class="card-body">
                     <form class="form-sign" method="post" action="../validar">
                         <div class="form-group text-center">
-                            <h3>Login</h3>
+                            <h3>FarmaVision</h3>
                             <img src="../img/login.png" width="100px" height="100px" alt=""/>
                             
-                            <lable>Bienvenido al sistema</lable>
+                            <lable>Ingresa tu cuenta</lable>
                         </div>
                         <div class="form-group">
                             <lable> Usuario</lable>

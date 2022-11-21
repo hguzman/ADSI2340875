@@ -3,6 +3,12 @@ package org.apache.jsp.vistas;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.Iterator;
+import java.util.List;
+import modelo.usuario;
+import modelo.usuarioDAO;
+import configuracion.Conectar;
+import java.sql.*;
 
 public final class listarusuario_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -51,6 +57,12 @@ public final class listarusuario_jsp extends org.apache.jasper.runtime.HttpJspBa
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -166,7 +178,7 @@ public final class listarusuario_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        <script src=\"https://code.jquery.com/jquery-3.3.1.js\"></script>\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\"></script>\n");
       out.write("        <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>\n");
-      out.write("        <script src=\"/PROYECTOFARMACIA/JS/javas2.js\" type=\"text/javascript\"></script>\n");
+      out.write("        <script src=\"/PROYECTOFARMACIA/JS/javas3.js\" type=\"text/javascript\"></script>\n");
       out.write("    </body>\n");
       out.write("\n");
       out.write("</html>\n");
@@ -221,7 +233,7 @@ public final class listarusuario_jsp extends org.apache.jasper.runtime.HttpJspBa
           out.write("                            <td class=\"border\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${us.getTipo()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\n");
-          out.write("                            <td class=\"border\">\n");
+          out.write("                            <td scope=\"col\" class=\"text-center-border\">\n");
           out.write("                                <input type=\"hidden\" name=\"id\" id=\"id\" value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${us.getId()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\n");

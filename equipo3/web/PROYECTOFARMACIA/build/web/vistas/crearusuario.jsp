@@ -100,8 +100,8 @@
                                 <div class ="col formulario__grupo" id="grupo__tipo">
                                     <label for="tipo" class="formulario__label" >Tipo</label>
                                     <select class="form-control" name="tipo">
-                                        <option value="Administrador">Administrador</option>
-                                        <option value="Cliente">Cliente</option>
+                                        <option value="administrador">Administrador</option>
+                                        <option value="cliente">Cliente</option>
                                         <option value="Usuario">Usuario</option>
                                     </select></br>
                                 </div>

@@ -4,6 +4,7 @@ import configuracion.Conectar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class usuarioDAO {
 
     
     Connection con;
+    Statement stmt = null;
     PreparedStatement pstm;
     Conectar conexion;
     ResultSet rs;
@@ -94,13 +96,14 @@ public usuario list(String id) {
             while (rs.next()) {
                 
                 usu.setId(rs.getString(1));
-                usu.setNombre(rs.getString(2));
-                usu.setApellido(rs.getString(3));
-                usu.setDireccion(rs.getString(4));
-                usu.setTelefono(rs.getString(5));
-                usu.setCorreo(rs.getString(6));
+                usu.setCorreo(rs.getString(2));
+                usu.setNombre(rs.getString(3));
+                usu.setApellido(rs.getString(4));
+                usu.setDireccion(rs.getString(5));
+                usu.setTelefono(rs.getString(6));
                 usu.setUsuario(rs.getString(7));
                 usu.setContrasena(rs.getString(8));
+                usu.setTipo(rs.getString(9));
                 
             }
         } catch (Exception e) {
@@ -135,6 +138,36 @@ public boolean crear(usuario us){
     
 }
 
+ public List buscar(String nombre){
+        List<usuario>usuario = new ArrayList();
+        try{
+            conexion = new Conectar();
+            Connection con = conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se ha establecido una conexion a la base de datos dao listar" + "\n");
+            }
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("select * from usuarios where Nombre like '%"+nombre+"%'");
+            while (rs.next()){
+                //System.out.println("hay productos en daolistar" + "\n");
+               usuario u = new usuario();
+               u.setId(rs.getString(1));
+               u.setCorreo(rs.getString(2));
+               u.setNombre(rs.getString(3)); 
+               u.setApellido(rs.getString(4));
+               u.setDireccion(rs.getString(5));
+               u.setTelefono(rs.getString(6));
+               u.setUsuario(rs.getString(7));
+               u.setContrasena(rs.getString(8));
+               u.setTipo(rs.getString(9));
+               usuario.add(u);
+           }
+        }catch(Exception e){
+            
+        }
+        return usuario;
+    }
+
 public boolean editar(usuario us){
     try{
         conexion = new Conectar();
@@ -142,13 +175,12 @@ public boolean editar(usuario us){
         if (con != null) {
             System.out.println("se establecio conexion a la base datos");
         }
-        pstm = con.prepareStatement("update usuarios set Nombre = ?, Apellido = ?, Direccion = ?, Telefono = ?, correo = ?, Usuario = ?, Contrasena = ?, Tipo = where id ");
-            
-            pstm.setString(1, us.getCorreo());
-            pstm.setString(2, us.getNombre());
-            pstm.setString(3, us.getApellido());
-            pstm.setString(4, us.getDireccion());
-            pstm.setString(5, us.getTelefono());
+        pstm = con.prepareStatement("update usuarios set Nombre = ?, Apellido = ?, Direccion = ?, Telefono = ?, correo = ?, Usuario = ?, Contrasena = ?, Tipo = ? where id = ?");
+            pstm.setString(1, us.getNombre());
+            pstm.setString(2, us.getApellido());
+            pstm.setString(3, us.getDireccion());
+            pstm.setString(4, us.getTelefono());
+            pstm.setString(5, us.getCorreo());
             pstm.setString(6, us.getUsuario());
             pstm.setString(7, us.getContrasena());
             pstm.setString(8, us.getTipo());
@@ -168,7 +200,7 @@ public boolean eliminar(String id){
         if (con != null) {
             System.out.println("se establecio conexion a la base datos");
         }
-        pstm = con.prepareStatement("Delete from usuarios where id =?");
+        pstm = con.prepareStatement("Delete from usuarios where idp =?");
         pstm.setString(1, id);
         pstm.executeUpdate();
         System.out.println("usuario eliminado correctamente");

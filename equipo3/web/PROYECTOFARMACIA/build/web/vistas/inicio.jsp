@@ -29,7 +29,7 @@
         
     %>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                
                 <ul class="navbar-nav">
@@ -54,8 +54,8 @@
                             <a class="nav-link" href="/PROYECTOFARMACIA/CtrProducto?accion=carrito"><i class="fa fa-shopping-cart">(<label style="color: darkorange">${contador}</label>)</i>Carrito </a>
                         </li>
                     </ul>
-                    <form class="d-flex" action="/PROYECTOFARMACIA/CtrProducto?accion=buscar" method="POST">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="busqueda">
+                    <form class="d-flex" action="/PROYECTOFARMACIA/CtrProducto?accion=buscar" method="POST" >
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="busqueda" >
                         <button class="btn btn-outline-success" type="submit" value="buscar">Search</button>
                     </form>
                     <ul class="navbar-nav">

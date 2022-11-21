@@ -33,6 +33,8 @@ public class CtrProducto extends HttpServlet {
     int idp;
     int item;
     car car;
+    int pre,sto,id;
+    String nom, des, fto;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,18 +48,23 @@ public class CtrProducto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
-        System.out.println("entro: " + accion);
+        System.out.println("entro4: " + accion);
         
         HttpSession sesion = request.getSession();
         System.out.println("item: "+sesion.getAttribute("tipo"));
         productos=pdao.listar();
         //***segunda clase**
+        
+        productoDAO dao = new productoDAO();
         producto p = new producto();
+        List<producto> List = dao.listar();
+        
+        System.out.println("accion : " + accion);
         switch (accion) {
            case "Listar":
                 productos = pdao.listar();
                 request.setAttribute("producto", productos);
-                request.getRequestDispatcher("vistas/ListarProducto.jsp").forward(request, response);
+                request.getRequestDispatcher("vistas/listarproducto.jsp").forward(request, response);
                 System.out.println("Entro en ctrproducto" + "\n");
                 break;
                 
@@ -70,10 +77,35 @@ public class CtrProducto extends HttpServlet {
                     System.out.println("producto: "+ productos.size());
                     request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
                 }
-                if(sesion.getAttribute("tipo").equals("Cliente")) {  
+                if(sesion.getAttribute("tipo").equals("cliente")) {  
                     request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
                 }
                 break;
+                case"editar":
+                    producto pro;
+                    int idprodu = Integer.parseInt(request.getParameter("id"));
+                    pro = pdao.listarId(idprodu);
+                    request.setAttribute("producto", pro);
+                    request.getRequestDispatcher("vistas/editarproducto.jsp").forward(request, response);
+                    break;
+                case"actualizar":
+                    
+                    id = Integer.parseInt(request.getParameter("id"));
+                    nom = request.getParameter("nombre");
+                    des = request.getParameter("descripcion");
+                    pre = Integer.parseInt(request.getParameter("precio"));
+                    sto = Integer.parseInt(request.getParameter("stock"));
+                    fto = request.getParameter("foto");
+                    System.out.println("id :" + id);
+                    p.setId(id);
+                    p.setNombre(nom);
+                    p.setDescripcion(des);
+                    p.setPrecio(pre);
+                    p.setStock(sto);
+                    p.setFoto(fto);
+                    pdao.actualizar(p);
+                    request.getRequestDispatcher("CtrProducto?accion=Listar").forward(request, response);
+                    break;
                 
            case "agregarcarrito":
                int pos = 0;
@@ -149,6 +181,17 @@ public class CtrProducto extends HttpServlet {
                        }
                    }
                    break;
+                   
+               case "Eliminar":
+                System.out.println("entro a eliminar");
+                id = Integer.parseInt(request.getParameter("id"));
+                dao.eliminar(id);
+                List = dao.listar();
+                request.setAttribute("producto", List);
+                request.getRequestDispatcher("vistas/listarproducto.jsp");
+                
+                break;
+                
                case "ActualizarCantidad":
                    int idpro = Integer.parseInt(request.getParameter("idp"));
                    int can = Integer.parseInt(request.getParameter("Cantidad"));
@@ -160,6 +203,22 @@ public class CtrProducto extends HttpServlet {
                        }
                    }
                    break;
+               case "Agregar":
+                   nom = request.getParameter("nombre");
+                   des = request.getParameter("descripcion");
+                   pre = Integer.parseInt(request.getParameter("precio"));
+                   sto = Integer.parseInt(request.getParameter("stock"));
+                   fto = "Imagenes/" + request.getParameter("ftoId");
+                   
+                   p.setNombre(nom);
+                   p.setDescripcion(des);
+                   p.setPrecio(pre);
+                   p.setStock(sto);
+                   p.setFoto(fto);
+                   pdao.crear(p);
+                   request.getRequestDispatcher("CtrProducto?accion=Listar").forward(request, response);
+                   break;
+                       
                    
                case "Comprar":
                    totalpagar = 0;
@@ -213,16 +272,19 @@ public class CtrProducto extends HttpServlet {
                 request.setAttribute("producto", productos);
                 
                 if (sesion.getAttribute("tipo") != null) {
-                     if (sesion.getAttribute("tipo").equals("administrador")) {  
-                    System.out.println("item2: "+sesion.getAttribute("tipo"));
-                    System.out.println("producto: "+ productos.size());
-                    request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
-                }
-                if(sesion.getAttribute("tipo").equals("Cliente")) {  
-                    request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
-                }
-                
-                }else{
+                    if (sesion.getAttribute("tipo").equals("administrador")) {
+                        System.out.println("item2: " + sesion.getAttribute("tipo"));
+                        System.out.println("producto: " + productos.size());
+                        request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
+                    }
+                    if (sesion.getAttribute("tipo").equals("cliente")) {
+                        request.setAttribute("producto", productos);
+                        request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
+                         System.out.println("item2: " + sesion.getAttribute("tipo"));
+                        System.out.println("producto: " + productos.size());
+                    }
+
+                } else {
                     request.getRequestDispatcher("vistas/inicio.jsp").forward(request, response);
                 }
 
