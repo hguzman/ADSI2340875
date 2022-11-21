@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $("tr #delusuaio").click(function () {
-        var id = $(this).parent().find("#idp").val();
+        var id = $(this).parent().find("#id").val();
         swal({
-            title: "Esta seguro de eliminar el usuario?",
+            title: "Esta seguro de eliminar?",
             text: "Una vez eliminado no podra recuperar!",
             icon: "warning",
             buttons: true,
@@ -10,30 +10,32 @@ $(document).ready(function () {
         })
                 .then((willDelete) => {
                     if (willDelete) {
-                        eliminarusu(id);
+                        eliminar(id);
                         swal("Poof! El usuario se ha eliminado !",{
                             icon: "success",
-                        }).then((willdeDelete)=>{
+                        }).then((willDelete)=>{
                             if(willDelete){
-                                parent.location.href="CtrProducto?accion=Listar"
+                                parent.location.href="CtrUsuario?accion=Listar"
                             }
                         });
                         
                     } else {
-                       swal("usuario no eliminado!");
+                       swal("Usuario no eliminado!");
                     }
                 });
     });
 });
 
-function eliminarusu(id){
-    var url = "Ctrusuario?accion=Eliminar"
+function eliminar(id){
+    var url = "CtrUsuario?accion=Eliminar"
     $.ajax({
         type:'get', 
         url: url,
-        data: "idp="+id,
-        succes: function(data, textStatus, jqXHR){
+        data: "id="+id,
+        success: function(data, textStatus, jqXHR){
             
         }
     });
     }
+ 
+

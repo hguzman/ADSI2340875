@@ -34,7 +34,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/PROYECTOFARMACIA/CtrProducto?accion=Listar"  data-bs-target="#item"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Productos</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Categorias</a></li>
+                            
                                 <%--<li><hr class="dropdown-divider"></li>--%>
                             <li><a class="dropdown-item" href="/PROYECTOFARMACIA/CtrUsuario?accion=Listar"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</a></li>
                         </ul>
@@ -44,31 +44,30 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/PROYECTOFARMACIA/CtrProducto?accion=home">Home</a>
+                            <a class="nav-link active" href="/PROYECTOFARMACIA/CtrUsuario?accion=home">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Oferta del dia</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/PROYECTOFARMACIA/CtrProducto?accion=carrito"><i class="fa fa-shopping-cart">(<label style="color: darkorange">${contador}</label>)</i>Carrito </a>
+                            <a class="nav-link" href="/PROYECTOFARMACIA/CtrUsuario?accion=carrito"><i class="fa fa-shopping-cart">(<label style="color: darkorange">${contador}</label>)</i>Carrito </a>
                         </li>
                     </ul>
-                    <form class="d-flex" action="/PROYECTOFARMACIA/CtrProducto?accion=buscar" method="POST">
+                    <form class="d-flex" action="/PROYECTOFARMACIA/CtrUsuario?accion=buscar" method="get">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="busqueda">
                         <button class="btn btn-outline-success" type="submit" value="buscar">Search</button>
                     </form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               ${usuario.getNombre()}
+                               
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item text-center" href="#">
                                         <img src="/PROYECTOFARMACIA/Imagen/usuario4-peque.png" alt="60" width ="60"/>
                                     </a></li>
-                                <li><a class="dropdown-item text-center" href="#">${usuario.getUsuario()}</a></li>
-                                <li><a class="dropdown-item text-center" href="#">${usuario.getTipo()}</a></li>
+                               
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-center" href="/PROYECTOFARMACIA/vistas/Logout.jsp">Salir</a></li>
                                     <%--<form class="form-inline" action="/PROYECTOFARMACIA/vistas/Logout.jsp" method="POST">
@@ -85,7 +84,7 @@
                 <table class="table">
                     <thead class="thead-dark border">
                         <tr>
-                            <th scope="col" colspan="7" class="text-center border">usuarios</th>
+                            <th scope="col" colspan="9" class="text-center border">usuarios</th>
                             <th scope="col" class="text-center border">  <a class="btn btn-primary ml-2" href="/PROYECTOFARMACIA/vistas/crearusuario.jsp"> <i class="fa fa-user-plus" aria-hidden="true"></i> </a> </th>
                         </tr>
                         
@@ -96,6 +95,8 @@
                             <th scope="col" class="text-center border">Correo</th>
                             <th scope="col" class="text-center border">Direccion</th>
                             <th scope="col" class="text-center border">Telefono</th>
+                            <th scope="col" class="text-center border">Usuario</th>
+                            <th scope="col" class="text-center border">Contrasena</th>
                             <th scope="col" class="text-center border">Tipo</th>
                             <th scope="col" class="text-center border">Acciones</th>
                             
@@ -111,6 +112,8 @@
                             <td class="border">${us.getCorreo()}</td>
                             <td class="border">${us.getDireccion()}</td>
                             <td class="border">${us.getTelefono()}</td>
+                            <td class="borde">${us.getUsuario()}</td>
+                            <td class="borde">${us.getContrasena()}</td>
                             <td class="border">${us.getTipo()}</td>
                             <td scope="col" class="text-center-border">
                                 <input type="hidden" name="id" id="id" value="${us.getId()}">
