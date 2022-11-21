@@ -1,13 +1,10 @@
 html,
-
 body {
 	height: 100%;
 	font-family: "Muli", sans-serif;
 	-webkit-font-smoothing: antialiased;
-
+	font-smoothing: antialiased;
 }
-	
-
 h1,
 h2,
 h3,
@@ -306,9 +303,6 @@ ol {
 	display: inline-block;
 }
 
-.teaml{
-	background-color: yellow;
-}
 .nav-menu {
 	text-align: center;
 }
@@ -1053,7 +1047,7 @@ ol {
 	border-radius: 50%;
 	line-height: 65px;
 	text-align: center;
-
+	float: left;
 	margin-right: 20px;
 }
 
@@ -2562,6 +2556,7 @@ ol {
 	border-radius: 50%;
 	line-height: 65px;
 	text-align: center;
+	float: left;
 	margin-right: 20px;
 }
 
