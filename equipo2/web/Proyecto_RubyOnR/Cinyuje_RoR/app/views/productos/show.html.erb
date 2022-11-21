@@ -1,0 +1,11 @@
+<p><strong>Nombre: </strong> <%= @producto.nombre %></p>
+<p><strong>Descripcion: </strong> <%= @producto.descripcion %></p>
+<p><strong>Precio: </strong> <%= @producto.precio %></p>
+<p><strong>Stock: </strong> <%= @producto.descripcion %></p>
+
+
+<hr>
+
+<%= link_to "Nuevo", new_producto_path %> | 
+<%= link_to "Todos", productos_path %> | 
+<%= link_to "Editar", edit_producto_path(@producto) %> | 
