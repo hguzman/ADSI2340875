@@ -19,8 +19,7 @@
         <link href="/dulce/CSS/Validar_Usuario.css" rel="stylesheet" type="text/css"/>
         <title>Crear Usuario</title>
     </head>
-    <body style="background: pink;">
-      
+    <body style="background: buttonface">
         <div class="container mt-2 border">
                 <div class="row">
                     <div class="col-sm-2"></div>
@@ -66,7 +65,7 @@
                                     <p class="formulario__input-error">El apellido tiene que ser letras o espacio no se aceptan numeros ni caracteres especiales</p>
                                 </div>
                             </div>
-                             <div class="form-row">
+                            <div class="form-row">
                                 <!-- Direccion-->
                                 <div class ="col formulario__grupo" id="grupo__direccion">
                                     <label for="direccion" class="formulario__label" >Direccion</label>
@@ -127,24 +126,23 @@
                                 </div>
                                 
                             </div>
-                             <!-- terminos-->
+                            <!-- terminos-->
                                 <div class ="formulario__grupo" id="grupo__terminos">
                                     <label class="formulario__label" >
                                         <input type="checkbox" class="formulario__checkbox" name="terminos" id="terminos">
                                         Acepto terminos y condiciones
                                     </label>
                                 </div>
-                             <div class="formulario__mensaje" id="formulario__mensaje">
+                            <div class="formulario__mensaje" id="formulario__mensaje">
                                 <p><i class="fa fa-exclamation-triangle"></i> <b>Error:</b> por favor llena corectamente el formulario</p>
                             </div>
-                             <div class="form-row">
+                            <div class="form-row">
                                 <!-- botones-->
                                 <div class ="col mt-2 text-center formulario__grupo-btn-enviar">
                                     <button type="submit" class="btn btn-primary formulario__btn" name="accion" value="nuevo">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button> 
                                     <a class="btn btn-danger formulario__btn" name="regresar" href="/dulce/ctrlUsuario?accion=Listar">Regresar <i class="fa fa-undo" aria-hidden="true"></i></a>
                                     <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Informacion enviada exitosamente</p>
                                 </div>
-                                                               
                             </div>
                         </form>  
 
@@ -159,4 +157,3 @@
     </body>
 
 </html>
-

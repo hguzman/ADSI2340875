@@ -19,7 +19,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"  crossorigin="anonymous">
-        <title>Dulceria el parque</title>
+        
+        <title>Tienda Virtual</title>
     </head>
     <%
         /*if(session.getAttribute("log")==null || session.getAttribute("log").equals('o') || !session.getAttribute("tipo").equals("Administrador")){
@@ -31,12 +32,11 @@
     <body style="background: pink;">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-               
                 <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                           <a class="nav-link active dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link active dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             DULCERIA
-                           </a>
+                            </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dulce/CtrProducto?accion=Listar"  data-bs-target="#item"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Productos</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Categorias</a></li>
@@ -61,7 +61,7 @@
                     </ul>
                     <form class="d-flex" action="/dulce/CtrProducto?accion=buscar" method="POST">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="busqueda">
-                        <button class="btn btn-outline-dark bg-light" type="submit" value="buscar">Search</button>
+                        <button class="btn btn-outline-dark bg-light" type="submit" value="buscar" >Search</button>
                     </form>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -70,7 +70,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item text-center" href="#">
-                                        <img src="/dulce/img/login.png" alt="60" width ="60"/>
+                                        <img src="../img/usu.jpg" alt="60" width ="60"/>
                                     </a></li>
                                 <li><a class="dropdown-item text-center" href="#">${usuario.getUsuario()}</a></li>
                                 <li><a class="dropdown-item text-center" href="#">${usuario.getTipo()}</a></li>
@@ -85,9 +85,34 @@
                 </div>
             </div>
         </nav>
-                        
-       <div class="container mt-2">
-            <div class="row">
+        <div class="container mt-2">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/dulce/img/principal.jpg" class="d-block w-100 " alt="..." height="400" >
+            </div>
+            <div class="carousel-item">
+                <img src="/dulce/img/gomitas.jpg" class="d-block w-100" alt="..." height="400">
+            </div>
+            <div class="carousel-item">
+                <img src="/dulce/img/galletas_muu.jpg" class="d-block w-100" alt="..." height="400">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+            <div class="row mt-5">
                 
                 
                 <c:forEach var="p" items="${producto}">
@@ -97,15 +122,15 @@
                                 <label>${p.getNombre()}</label>
                             </div>
                             <div class="card-body text-center">
-                               <%-- <img src="ControlImg?id=${p.getId()}" width="200" height="180"></br> --%>
-                               <img src="${p.getFoto()}" width="200" height="180"></br> 
-                               <i>$.${p.getPrecio()}</i>
+                                <%-- <img src="ControlImg?id=${p.getId()}" width="200" height="180"></br> --%>
+                                <img src="${p.getFoto()}" width="200" height="180"></br> 
+                                <i>$.${p.getPrecio()}</i>
                             </div>
                             <div class="card-footer text-center">
                                 <label>${p.getDescripcion()}</label>
                                 <div>
                                     <a href="/dulce/CtrProducto?accion=agregarcarrito&id=${p.getId()}" class="btn btn-outline-info"><i class="fa fa-shopping-cart"></i> Agregar Carrito</a>
-                                    <a href="/dulce/CtrProducto?accion=Comprar&id=${p.getId()}" class="btn btn-primary">Comprar</a>
+                                    <a href="/dulce/CtrProducto?accion=Comprar&id=${p.getId()}" class="btn btn-primary bg-primary">Comprar</a>
                                 </div>
                             </div>
                         </div>
@@ -114,13 +139,11 @@
                 
             </div>
         </div>
-                        
-         
         
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="/MVC/js/Funciones.js" type="text/javascript"></script>
+        <script src="/dulce/js/Funciones.js" type="text/javascript"></script>
     </body>
 
 </html>
