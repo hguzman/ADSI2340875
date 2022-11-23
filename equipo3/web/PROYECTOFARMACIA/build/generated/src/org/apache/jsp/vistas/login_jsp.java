@@ -71,10 +71,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"card-body\">\n");
       out.write("                    <form class=\"form-sign\" method=\"post\" action=\"../validar\">\n");
       out.write("                        <div class=\"form-group text-center\">\n");
-      out.write("                            <h3>Login</h3>\n");
+      out.write("                            <h3>FarmaVision</h3>\n");
       out.write("                            <img src=\"../img/login.png\" width=\"100px\" height=\"100px\" alt=\"\"/>\n");
       out.write("                            \n");
-      out.write("                            <lable>Bienvenido al sistema</lable>\n");
+      out.write("                            <lable>Ingresa tu cuenta</lable>\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"form-group\">\n");
       out.write("                            <lable> Usuario</lable>\n");
