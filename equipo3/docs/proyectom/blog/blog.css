@@ -72,9 +72,12 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50px;
 }
 .espacio1{
-  height: 300px;
+  height: 300px;<
   width: 300px;
 }
 thead{
 border-radius: 50px;
+}
+.ray{
+  list-style-type: "-";
 }

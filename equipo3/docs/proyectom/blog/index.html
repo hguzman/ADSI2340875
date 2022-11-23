@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="blog.css" rel="stylesheet">
+    
   </head>
   <body>
   <header>
@@ -22,18 +23,25 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    
-      <ul class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="index.html">Plan de pruebas</a>
+    <ul class="navbar-nav">
+          <a class="nav-link active" aria-current="page">FARMAVISION</a>
       </ul>
+     <ul class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="indexinicio.html">Inicio</a>
+      </ul>
+
+ 
+      <ul class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="casosdeprueba.html">Casos de pruebas</a>
+      </ul>
+
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="Casoprueba.html">Caso prueba</a>
+          <a class="nav-link active" aria-current="page" href="index.html">Plan de pruebas</a>
       </ul>
-
     </div>
+   
   </nav>
   <br>
       </header>
@@ -52,10 +60,12 @@
     <div class="col-md-8">
 
       <article class="blog-post">
+        <article class="my-3" id="Intro">
         <h2 class="blog-post-title mb-1">Introducción</h2>
         <p class="blog-post-meta">Noviembre 7, 2022 by <a href="jimmy.html">Jimmy Castro</a></p>
 
         <p>Se presentará casos de pruebas referentes a los módulos establecidos. Estos módulos representarán el enfoque y la programación de todas las fases del proyecto, los cuales estarán previamente analizados y así ser requeridos para el sistema de información. </p>
+      </article>
         <hr>
         <h2>Objetivos <span class="badge badge-secondary"></span></h2>
         <p>Nuestro plan de pruebas tiene como objetivo orientar el esfuerzo de pruebas, identificando y detallando las pruebas más importantes, para que el equipo pueda enfocarse en su ejecución y pueda responder de forma adecuada a los cambios que tiene el proyecto, para así atender los objetivos de calidad en el desarrollo de sistemas, encargándose de definir aspectos como por ejemplo los módulos o funcionalidades, tipos de pruebas, entornos, recursos asignados, entre otros aspectos.</p>
@@ -82,28 +92,32 @@
           <dd>Gestiona de manera global el proyecto. Planifica, define los recursos, coordina y supervisa el análisis funcional y orgánico, así como también el desarrollo y la implementación del software.</dd>
 
           <li><dt>Grupos de aseguramiento de la calidad </dt></li>
-          <dd>Este grupo tiene las actividades planificadas y sistemáticas necesarias para aportar la confianza que el software satisfará los requisitos dados de calidad. Este aseguramiento se diseña para la aplicación antes de comenzar a desarrollarla en el que debe:</dd>
+          <dd>Este grupo tiene las actividades planificadas y sistemáticas necesarias para aportar la confianza que el software satisfará los requisitos dados de calidad. Este aseguramiento se diseña para la aplicación antes de comenzar a desarrollarla en el que debe tener:</dd>
 
-  <li class="list-group-item">• Un enfoque de gestión de calidad.</li>
-  <li class="list-group-item">• Métodos y herramientas de Ingeniería del Software.</li>
-  <li class="list-group-item">• Revisiones técnicas formales en el proceso del software.</li>
-  <li class="list-group-item">• Una estrategia de prueba multiescalar.</li>
-  <li class="list-group-item">• El control de la documentación del software y de los cambios realizados.</li>
-  <li class="list-group-item">• Procedimientos para ajustarse a los estándares de desarrollo del software.</li>
-  <li class="list-group-item">• Mecanismos de medición y de generación de informes.</li>
+  <li class="list-group-item">Un enfoque de gestión de calidad.</li>
+  <li class="list-group-item">Métodos y herramientas de Ingeniería del Software.</li>
+  <li class="list-group-item">Revisiones técnicas formales en el proceso del software.</li>
+  <li class="list-group-item">Una estrategia de prueba multiescalar.</li>
+  <li class="list-group-item">El control de la documentación del software y de los cambios realizados.</li>
+  <li class="list-group-item">Procedimientos para ajustarse a los estándares de desarrollo del software.</li>
+  <li class="list-group-item">Mecanismos de medición y de generación de informes.</li>
           </ul>
         </dl>
+        <article class="my-3" id="Alcance">
 <h1 class="blog-post-title mb-1">Alcance y enfoque</h1>
 <hr>
 <h2>Items a probar (Funciones)</h2>
 <p class="blog-post-meta">Noviembre 10, 2022 by <a href="jimmy.html">Jimmy Castro</a></p>
 
 <p>Los ítems o módulos a probar que se encuentran son:</p>
-<li class="list-group-item">• Módulo de login</li>
-  <li class="list-group-item">• Registro de usuario.</li>
-  <li class="list-group-item">• Modulo de consulta</li>
-  <li class="list-group-item">• Modulo de carrito</li>
+<ul>
+          <li>Módulo de login</li>
+          <li>Registro de usuario.</li>
+          <li>Modulo de consulta</li>
+          <li>Modulo de carrito</li>
+        </ul>
   <br>
+</article>
 
   <h2>Cuestiones de riesgo</h2>
   <p>El objetivo de esta disciplina es identificar, abordar y mitigar elementos de riesgo antes de que se conviertan en una amenaza para la ejecución exitosa del proyecto y para el logro de los objetivos planteados. </p>
@@ -128,16 +142,62 @@
 
           <h2>Caracteristicas que no se van  probar</h2>
   <p>Las características por probar desde el punto de vista del Usuario es que cada uno de estos módulos respondan de manera correctas a sus necesidades como, por ejemplo:</p>
+  </ul></dl>
 
    <dl>
           <ul class="list-group">
          <li><dt>Modulo administrativo (Solo tienen acceso los administradores) </dt></li>
-         |</ul>
+         </ul>
       </dl>
-    </ul>
+       <h2>Enfoque(Estrategia)</h2>
+  <p>Nos enfocamos en una estrategia que determine cómo se van a llevar a cabo los procesos de pruebas de software, impulsando nuestras decisiones sobre cómo invertir nuestros esfuerzos de pruebas.
+</p>
+<hr>
+<article class="my-3" id="Criterios">
 
-  
-        
+ <h1>Criterios de transicion</h1>
+ <p class="blog-post-meta">Noviembre 14, 2022 by <a href="jimmy.html">Jimmy Castro</a></p>
+ <h2>Criterios de entrada</h2>
+  <p>Los criterios de entrada indican las condiciones que se deben cumplir antes de que pueda comenzar la prueba. El objetivo de los criterios de entrada es evitar que una tarea comience, lo cual conllevaría un mayor esfuerzo que el necesario para eliminar los criterios de entrada fallidos. Incluyen:
+</p>
+<ul class="ray">
+  <b><li>Un enfoque de gestión de calidad</li></b>
+  <p>
+Apache Tomcat es el entorno de prueba que usa esta configuración y sirviendo como contenedor de servlets que se puede usar para compilar y ejecutar aplicaciones web realizadas en Java.
+</p>
+
+<b><li>Casos de pruebas escritos y aprobados:</li></b>
+  <p>
+Casos de prueba previamente realizados y aprobados por el jefe de proyecto </p>
+<li>Herramientas de pruebas preparadas:</li>
+  <p>
+Estas herramientas de pruebas preparadas son:</p>
+
+<li>Recursos para las pruebas disponibles</li>
+
+
+</ul>
+
+ </article>
+
+<h2>Criterios de salida</h2>
+<p>Lista todos los criterios que se han de satisfacer para que una fase de pruebas se dé por finalizada. Entre los posibles ítems que se pueden incluir están:</p>
+
+<ul class="ray">
+  <li>Completitud de los casos de pruebas</li>
+    <li>Números y severidad de los defectos abiertos</li>
+      <li>Paso de los objetivos de pruebas</li>
+</ul>
+
+<h2>Criterios de suspension</h2>
+<p>Esta sección debería incluir criterios o condiciones que, si ocurren, se deberían parar las pruebas. Esta sección es muy importante, muchas veces se le pide al equipo de pruebas que continúe con las pruebas con intentos en vanos por llegar al calendario establecido cuando en realidad el software no está preparado para que se pruebe.</p>
+<h2>Criterios de renaudacion</h2>
+<p>Llegar a un acuerdo entre las partes para reanudar las pruebas o que se hayan solucionado los defectos/problemas encontrados.</p>
+<h2>Criterios de exito y fallo</h2>
+<p>sdasd</p>
+
+
+
       </article>
 
 
@@ -191,20 +251,12 @@
         </div>
 
         <div class="p-4">
-          <h4 class="fst-italic">Archives</h4>
+          <h4 class="fst-italic">Titulos</h4>
           <ol class="list-unstyled mb-0">
-            <li><a href="#">March 2021</a></li>
-            <li><a href="#">February 2021</a></li>
-            <li><a href="#">January 2021</a></li>
-            <li><a href="#">December 2020</a></li>
-            <li><a href="#">November 2020</a></li>
-            <li><a href="#">October 2020</a></li>
-            <li><a href="#">September 2020</a></li>
-            <li><a href="#">August 2020</a></li>
-            <li><a href="#">July 2020</a></li>
-            <li><a href="#">June 2020</a></li>
-            <li><a href="#">May 2020</a></li>
-            <li><a href="#">April 2020</a></li>
+            <li><a class="d-inline-flex align-items-center rounded text-decoration-none active" href="#Intro">Introduccion</a></li>
+           <li><a class="d-inline-flex align-items-center rounded text-decoration-none active" href="#Alcance">Alcance y enfoque</a></li>
+            <li><a class="d-inline-flex align-items-center rounded text-decoration-none active" href="#Criterios">Criterios de transicion</a></li>
+
           </ol>
         </div>
 
@@ -213,7 +265,7 @@
           <ol class="list-unstyled">
             <li><a href="#">GitHub</a></li>
             <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
+            <li><a href="" target="_BLANK">Instagram</a></li>
           </ol>
         </div>
       </div>
@@ -223,9 +275,9 @@
 </main>
 
 <footer class="blog-footer">
-  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  <p>J<a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
   <p>
-    <a href="#">Back to top</a>
+    <a href="#">Volver arriba</a>
   </p>
 </footer>
     <style>
