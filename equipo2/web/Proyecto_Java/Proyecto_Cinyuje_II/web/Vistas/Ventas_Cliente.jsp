@@ -14,7 +14,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <link href="/Proyecto_Cinyuje/CSS/Promo.css" rel="stylesheet" type="text/css"/>
-        
+
         <title>Cinyuje</title>
     </head>
 
@@ -30,11 +30,11 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../Imagenes/logo_cinyuje.png" width="90" alt="logo_cinyuje"/>
+                            <img src="Imagenes/logo_cinyuje.png" width="90" alt="logo_cinyuje"/>
                         </a>
-                        
+
                     </li>   
-                    
+
                 </ul>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -67,9 +67,9 @@
                                 <li><a class="dropdown-item text-center" href="#">${usuario.getTipo()}</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-center" href="/Proyecto_Cinyuje/Vistas/Logout.jsp">Salir</a></li>
-                                <%--<form class="form-inline" action="/TiendaVirtual/Vistas/Logout.jsp" method="POST">
-                                    <button name="accion" value="Salir" class="dropdown-item text-center" href="#">Salir</button>
-                                </form>--%>
+                                    <%--<form class="form-inline" action="/TiendaVirtual/Vistas/Logout.jsp" method="POST">
+                                        <button name="accion" value="Salir" class="dropdown-item text-center" href="#">Salir</button>
+                                    </form>--%>
                             </ul>
                         </li>
                     </ul>
@@ -78,34 +78,34 @@
             </div>
         </nav>
 
-               <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item">
-                    <img src="../Imagenes/Cinyuje.png" class="d-block w-100" alt="...">
+                    <img src="/Proyecto_Cinyuje/Imagenes/Cinyuje.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="../Imagenes/Welcome.png" class="d-block w-100" alt="...">
+                    <img src="/Proyecto_Cinyuje/Imagenes/Welcome.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item active">
-                    <img src="../Imagenes/black_friday.png" class="d-block w-100" alt="...">
+                    <img src="/Proyecto_Cinyuje/Imagenes/black_friday.png" class="d-block w-100" alt="...">
                 </div>
             </div>
         </div>
-                        <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#"><img src="../Imagenes/Categoria_3.png" width="150" alt="..."></a>
-  </li>
-  <li class="nav-item">
-      <a class="nav-link" href="#"> <img src="../Imagenes/Categoria_1.png" width="150" alt="..."> </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#"><img src="../Imagenes/Categoria_2.png" width="150" alt="..."></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#"><img src="../Imagenes/Categoria_4.png" width="150" alt="..."></a>
-  </li>
-</ul>
-                            
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"><img src="/Proyecto_Cinyuje/Imagenes/Categoria_3.png" width="150" alt="..."></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> <img src="/Proyecto_Cinyuje/Imagenes/Categoria_1.png" width="150" alt="..."> </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><img src="/Proyecto_Cinyuje/Imagenes/Categoria_2.png" width="150" alt="..."></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><img src="/Proyecto_Cinyuje/Imagenes/Categoria_4.png" width="150" alt="..."></a>
+            </li>
+        </ul>
+
         <div class="container mt-2">
             <div class="row">
                 <c:forEach var= "p" items="${producto}" >
