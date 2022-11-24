@@ -12,6 +12,7 @@ package Modelo;
 public class Detalle_Pedido {
     private int id_detalle;
     private int id_producto;
+    private String nombre;
     private int id_pedido;
     private int cantidad;
     private int precio_pedido;
@@ -20,12 +21,13 @@ public class Detalle_Pedido {
     }
     
 
-    public Detalle_Pedido(int id_detalle, int id_producto, int id_pedido, int cantidad, int precio_pedido) {
+    public Detalle_Pedido(int id_detalle, int id_producto, String nombre, int id_pedido, int cantidad, int precio_pedido) {
         this.id_detalle = id_detalle;
         this.id_producto = id_producto;
         this.id_pedido = id_pedido;
         this.cantidad = cantidad;
         this.precio_pedido = precio_pedido;
+        this.nombre = nombre;
     }
 
     public void setId_detalle(int id_detalle) {
@@ -67,6 +69,16 @@ public class Detalle_Pedido {
     public int getPrecio_pedido() {
         return precio_pedido;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
     
     
     

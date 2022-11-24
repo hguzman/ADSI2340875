@@ -47,6 +47,36 @@ public class PedidoDAO {
 
         }
     }
+    
+    public int listarId(){
+        int idp = 0;
+       try {
+            conexion = new Conectar();
+            con = conexion.crearconexion();
+            if (con != null) {
+                System.out.println("Se conecto a la base de datos de pedidos DAO");
+
+            }
+
+            pstm = con.prepareStatement("select MAX(IdPedido) from pedidos");
+            
+        
+           rs = pstm.executeQuery();
+            
+            while(rs.next()){
+            
+                idp = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            
+            System.out.println("Error al consultar pedidos" + e);
+
+        }
+       
+       return idp;
+    
+    }
 
     
 }
