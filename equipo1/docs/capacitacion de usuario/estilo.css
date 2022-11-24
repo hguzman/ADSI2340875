@@ -1,0 +1,17 @@
+header{
+    text-align: center;
+}
+table{
+    text-align: center;
+    color: black;
+}
+
+body {
+    background-image: url('img/fondo1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+  }
+  h1{
+    color: black;
+  }
