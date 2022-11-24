@@ -30,6 +30,10 @@ class _Page1State extends State<Page1> {
                 AssetImage(name)
               )
             ),
+            Text('Categorias',style: TextStyle(
+              color: Color.fromARGB(255, 2, 12, 70),
+              fontSize: 20.0
+            ),),
             Row(             
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children:[
