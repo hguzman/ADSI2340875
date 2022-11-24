@@ -74,7 +74,7 @@ return Scaffold(
     ),
   ),
   appBar: AppBar(
-  title: Text("WELCOME"),
+  title: Text("Bienvenidos"),
   backgroundColor: Colors.black,
   ),
   
