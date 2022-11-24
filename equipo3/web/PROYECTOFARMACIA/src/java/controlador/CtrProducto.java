@@ -7,7 +7,9 @@ package controlador;
 
 import modelo.productoDAO;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.car;
+import modelo.detallepedido;
+import modelo.detallepedidoDAO;
+import modelo.pedido;
+import modelo.pedidoDAO;
 import modelo.producto;
 
 
@@ -25,6 +31,9 @@ import modelo.producto;
  */
 @WebServlet(name = "CtrProducto", urlPatterns = {"/CtrProducto"})
 public class CtrProducto extends HttpServlet {
+    pedidoDAO pedao = new pedidoDAO();
+    detallepedidoDAO dpdao = new detallepedidoDAO();
+    pedido ped = new pedido();
     productoDAO pdao = new productoDAO();
     List<producto> productos = new ArrayList();
     List<car> listacar = new ArrayList();
@@ -33,8 +42,9 @@ public class CtrProducto extends HttpServlet {
     int idp;
     int item;
     car car;
-    int pre,sto,id;
-    String nom, des, fto;
+    int pre,sto,id, cpedido, vpedido, Id, Idp;
+    String nom, des, fto, fpedido;
+    Date d = new Date();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -81,6 +91,28 @@ public class CtrProducto extends HttpServlet {
                     request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
                 }
                 break;
+            case "pedido":
+                System.out.println("entro a pedido");
+                    Id = Integer.parseInt(request.getParameter("idus"));
+                    fpedido = DateFormat.getDateInstance().format(d);
+                    vpedido = totalpagar;
+                    ped.setId(Id);
+                    ped.setFecha_pedido(fpedido);
+                    ped.setValor_pedido(vpedido);
+                    int idp = pedao.listarId();
+                    for (int i = 0; i < listacar.size(); i++) {
+                        detallepedido dped = new detallepedido();
+                        dped.setCodigo_pedido(idp);
+                        dped.setIdproducto(listacar.get(i).getIdproducto());
+                        dped.setNombre(listacar.get(i).getNombre());
+                        dped.setCantidad(listacar.get(i).getCantidad());
+                        dpdao.crear(dped);
+                }
+                       
+                    
+                    
+                break;
+                   
                 case"editar":
                     producto pro;
                     int idprodu = Integer.parseInt(request.getParameter("id"));
@@ -168,8 +200,8 @@ public class CtrProducto extends HttpServlet {
                     System.out.println("producto: "+ productos.size());
                     request.getRequestDispatcher("vistas/carrito.jsp").forward(request, response);
                 }
-                if(sesion.getAttribute("tipo").equals("Cliente")) {  
-                    request.getRequestDispatcher("vistas/carritocliente.jsp").forward(request, response);
+                if(sesion.getAttribute("tipo").equals("cliente")) {  
+                    request.getRequestDispatcher("vistas/carrito_cliente.jsp").forward(request, response);
                 }
                break;
                
