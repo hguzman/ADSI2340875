@@ -4,9 +4,10 @@
 }
 
 body{
-  background: url(../imagenes/img_azul.jpg);
+  background-image: url('imagenes/Cinyuje.png');
   background-size: cover;
   background-attachment: fixed;
+  
 }
 
 .list-group-item{
