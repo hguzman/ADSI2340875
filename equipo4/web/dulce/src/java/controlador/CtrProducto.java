@@ -7,7 +7,11 @@ package controlador;
 
 import modelo.productoDAO;
 import java.io.IOException;
+import java.text.DateFormat;
+
 import java.util.ArrayList;
+import java.util.Date;
+
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +19,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.DetallePedido;
+import modelo.DetallePedidoDAO;
+import modelo.Pedido;
+import modelo.PedidoDAO;
 import modelo.car;
 import modelo.producto;
+
+
 
 
 /**
@@ -26,13 +36,21 @@ import modelo.producto;
 @WebServlet(name = "CtrProducto", urlPatterns = {"/CtrProducto"})
 public class CtrProducto extends HttpServlet {
     productoDAO pdao = new productoDAO();
+    DetallePedidoDAO dpdao = new DetallePedidoDAO();
+    PedidoDAO pedao = new PedidoDAO();
     List<producto> productos = new ArrayList();
+    List<producto> list = pdao.listar();
     List<car> listacar = new ArrayList();
     int cantidad;
     int totalpagar;
     int idp;
     int item;
+    int pre, sto, id, cat, monto, pago;
+    String nom, des, fto, estado, fecha, idcli;
     car carrito;
+    Date d = new Date();
+    Pedido ped = new Pedido();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,110 +71,112 @@ public class CtrProducto extends HttpServlet {
         productos=pdao.listar();
         //***segunda clase**
         producto p = new producto();
+        productoDAO dao = new productoDAO();
+        List<producto> list = pdao.listar();
         switch (accion) {
-           case "Listar":
+            case "Listar":
                 productos = pdao.listar();
                 request.setAttribute("producto", productos);
                 request.getRequestDispatcher("vistas/ListarProducto.jsp").forward(request, response);
                 System.out.println("Entro en ctrproducto" + "\n");
                 break;
                 
-           case "buscar":
-               String nombre = request.getParameter("busqueda");
-               productos = pdao.buscar(nombre);
-               request.setAttribute("producto", productos);
-                 if (sesion.getAttribute("tipo").equals("administrador")) {  
-                    System.out.println("item2: "+sesion.getAttribute("tipo"));
-                    System.out.println("producto: "+ productos.size());
-                    request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
-                }
-                if(sesion.getAttribute("tipo").equals("Cliente")) {  
-                    request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
-                }
+            case "buscar":
+                String nombre = request.getParameter("busqueda");
+                productos = pdao.buscar(nombre);
+                request.setAttribute("producto", productos);
+                    if (sesion.getAttribute("tipo").equals("administrador")) {  
+                        System.out.println("item2: "+sesion.getAttribute("tipo"));
+                        System.out.println("producto: "+ productos.size());
+                        request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
+                    }
+                    if(sesion.getAttribute("tipo").equals("Cliente")) {  
+                        request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
+                    }
                 break;
                 
-           case "agregarcarrito":
-               int pos = 0;
-               cantidad = 1;
-               idp =Integer.parseInt(request.getParameter("id"));
-               p = pdao.listarId(idp);
-               if(listacar.size() > 0 ){
-                   for(int i= 0; i < listacar.size(); i++){
-                       if(idp == listacar.get(i).getIdproducto()){
+            case "agregarcarrito":
+                int pos = 0;
+                cantidad = 1;
+                idp =Integer.parseInt(request.getParameter("id"));
+                p = pdao.listarId(idp);
+                if(listacar.size() > 0 ){
+                    for(int i= 0; i < listacar.size(); i++){
+                        if(idp == listacar.get(i).getIdproducto()){
                         pos =i;   
-                       }
-                   }
-                   if(idp == listacar.get(pos).getIdproducto()){
-                       cantidad = cantidad + listacar.get(pos).getCantidad();
-                       int subtotal = cantidad * listacar.get(pos).getPreciocompra();
-                       listacar.get(pos).setCantidad(cantidad);
-                       listacar.get(pos).setSubtotal(subtotal);
-                   }else{
-                   item++;
-                   car Car = new car();
-                   Car.setItem(item);
-                   Car.setIdproducto(idp);
-                   Car.setNombre(p.getNombre());
-                   Car.setDescripcion(p.getDescripcion());
-                   Car.setFoto(p.getFoto());
-                   Car.setPreciocompra(p.getPrecio());
-                   Car.setCantidad(cantidad);
-                   Car.setSubtotal(cantidad * p.getPrecio());
-                   listacar.add(Car);
-               }
-               }else{
-                  item++;
-                   car Car = new car();
-                   Car.setItem(item);
-                   Car.setIdproducto(idp);
-                   Car.setNombre(p.getNombre());
-                   Car.setDescripcion(p.getDescripcion());
-                   Car.setFoto(p.getFoto());
-                   Car.setPreciocompra(p.getPrecio());
-                   Car.setCantidad(cantidad);
-                   Car.setSubtotal(cantidad * p.getPrecio());
-                   listacar.add(Car);
-               }
-               request.setAttribute("contador", listacar.size());
-               request.getRequestDispatcher("CtrProducto?accion=home").forward(request, response);
-               break;
-               
-               case "carrito":
-                   totalpagar=0;
-                   for(int i = 0; i <listacar.size(); i++){
-                       totalpagar = totalpagar + listacar.get(i).getSubtotal();
-                   }
-                   request.setAttribute("totalpagar", totalpagar);
-                   request.setAttribute("car", listacar);
-                   
-                   if (sesion.getAttribute("tipo").equals("administrador")) {  
+                        }
+                    }
+                    if(idp == listacar.get(pos).getIdproducto()){
+                        cantidad = cantidad + listacar.get(pos).getCantidad();
+                        int subtotal = cantidad * listacar.get(pos).getPreciocompra();
+                        listacar.get(pos).setCantidad(cantidad);
+                        listacar.get(pos).setSubtotal(subtotal);
+                    }else{
+                    item++;
+                    car Car = new car();
+                    Car.setItem(item);
+                    Car.setIdproducto(idp);
+                    Car.setNombre(p.getNombre());
+                    Car.setDescripcion(p.getDescripcion());
+                    Car.setFoto(p.getFoto());
+                    Car.setPreciocompra(p.getPrecio());
+                    Car.setCantidad(cantidad);
+                    Car.setSubtotal(cantidad * p.getPrecio());
+                    listacar.add(Car);
+                    }
+                }else{
+                    item++;
+                    car Car = new car();
+                    Car.setItem(item);
+                    Car.setIdproducto(idp);
+                    Car.setNombre(p.getNombre());
+                    Car.setDescripcion(p.getDescripcion());
+                    Car.setFoto(p.getFoto());
+                    Car.setPreciocompra(p.getPrecio());
+                    Car.setCantidad(cantidad);
+                    Car.setSubtotal(cantidad * p.getPrecio());
+                    listacar.add(Car);
+                }
+                request.setAttribute("contador", listacar.size());
+                request.getRequestDispatcher("CtrProducto?accion=home").forward(request, response);
+                break;
+                
+                case "carrito":
+                    totalpagar=0;
+                    for(int i = 0; i <listacar.size(); i++){
+                        totalpagar = totalpagar + listacar.get(i).getSubtotal();
+                    }
+                    request.setAttribute("totalpagar", totalpagar);
+                    request.setAttribute("car", listacar);
+                    
+                    if (sesion.getAttribute("tipo").equals("Administrador")) {  
                     System.out.println("item2: "+sesion.getAttribute("tipo"));
                     System.out.println("producto: "+ productos.size());
                     request.getRequestDispatcher("vistas/carrito.jsp").forward(request, response);
                 }
                 if(sesion.getAttribute("tipo").equals("Cliente")) {  
-                    request.getRequestDispatcher("vistas/carritocliente.jsp").forward(request, response);
+                    request.getRequestDispatcher("vistas/carrito.jsp").forward(request, response);
                 }
-               break;
-               case "Delete":
-                   int idproducto = Integer.parseInt(request.getParameter("idp"));
-                   for (int i = 0; i < listacar.size(); i++){
-                       if (listacar.get(i).getIdproducto() == idproducto){
-                           listacar.remove(i);
-                       }
-                   }
-                   break;
-               case "ActualizarCantidad":
-                   int idpro = Integer.parseInt(request.getParameter("idp"));
-                   int can = Integer.parseInt(request.getParameter("Cantidad"));
-                   for (int i = 0; i < listacar.size(); i++){
-                       if (listacar.get(i).getIdproducto() == idpro){
-                           listacar.get(i).setCantidad(can);
-                           int st = listacar.get(i).getPreciocompra() * can;
-                           listacar.get(i).setSubtotal(st);
-                       }
-                   }
-                   break;
+                break;
+                case "Delete":
+                    int idproducto = Integer.parseInt(request.getParameter("idp"));
+                    for (int i = 0; i < listacar.size(); i++){
+                        if (listacar.get(i).getIdproducto() == idproducto){
+                            listacar.remove(i);
+                        }
+                    }
+                    break;
+                case "ActualizarCantidad":
+                    int idpro = Integer.parseInt(request.getParameter("idp"));
+                    int can = Integer.parseInt(request.getParameter("Cantidad"));
+                    for (int i = 0; i < listacar.size(); i++){
+                        if (listacar.get(i).getIdproducto() == idpro){
+                            listacar.get(i).setCantidad(can);
+                            int st = listacar.get(i).getPreciocompra() * can;
+                            listacar.get(i).setSubtotal(st);
+                        }
+                    }
+                    break;
                 case "Comprar":
                     totalpagar = 0;
                     if (cantidad == 0){
@@ -195,14 +215,79 @@ public class CtrProducto extends HttpServlet {
                         request.getRequestDispatcher("vistas/carrito.jsp").forward(request, response);
                     }
                     break;
+                case "agregar":
+                    nom = request.getParameter("nombre");
+                    des = request.getParameter("descripcion");
+                    pre = Integer.parseInt(request.getParameter("precio"));
+                    sto = Integer.parseInt(request.getParameter("stock"));
+                    cat = Integer.parseInt(request.getParameter("categoria"));
+                    fto = "img/" + request.getParameter("foto");
+                    p.setNombre(nom);
+                    p.setDescripcion(des);
+                    p.setPrecio(pre);
+                    p.setStock(sto);
+                    p.setFoto(fto);
+                    pdao.crear(p);
+                    request.getRequestDispatcher("CtrProducto?accion=Listar").forward(request, response);
+                    break;
+                case "editar":
+                    producto pro;
+                    int idprodu = Integer.parseInt(request.getParameter("id"));
+                    pro = pdao.listarId(idprodu);
+                    request.setAttribute("producto", pro);
+                    request.getRequestDispatcher("vistas/editarproducto.jsp").forward(request, response);
+                    break;
+                case "Actualizar":
+                    
+                    p.setId(id);
+                    p.setNombre(nom);
+                    p.setDescripcion(des);
+                    p.setPrecio(pre);
+                    p.setStock(sto);
+                    p.setFoto(fto);
+                    pdao.actualizar(p);
+                    request.getRequestDispatcher("CtrProducto?accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    id = Integer.parseInt(request.getParameter("id"));
+                    pdao.eliminarpro(id);
+                    list = pdao.listar();
+                    request.setAttribute("producto", list);
+                    System.out.println("elimino");
+                    request.getRequestDispatcher("vistas/ListarProducto.jsp").forward(request, response);
+                    break;
+                case "pedido":
+                    idcli = request.getParameter("idus");
+                    estado = "En proceso";
+                    monto = totalpagar;
+                    pago = 1;
+                    fecha = DateFormat.getDateInstance().format(d);
+                    ped.setIdcliente(idcli);
+                    ped.setMonto(monto);
+                    ped.setFecha(fecha);
+                    ped.setEstado(estado);
+                    pedao.crear(ped);
+                    for (int i = 0; i <listacar.size(); i++) {
+                        DetallePedido depe = new DetallePedido();
+                        depe.setIdpedido(idp);
+                        depe.setIdproducto(listacar.get(i).getIdproducto());
+                        depe.setNombre(listacar.get(i).getNombre());
+                        depe.setCantidad(listacar.get(i).getCantidad());
+                        depe.setPrecio(listacar.get(i).getPreciocompra());
+                        dpdao.crear(depe);
+                    }
+                    int idp = pedao.listarId();
+                    break;
             default:
                 productos = pdao.listar();
+                System.out.println("usuario: "+sesion.getAttribute("tipo"));
                 request.setAttribute("producto", productos);
                 if (sesion.getAttribute("tipo") != null){
-                   if (sesion.getAttribute("tipo").equals("administrador")) {
+                    if (sesion.getAttribute("tipo").equals("Administrador")) {
                         request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
                     }
                     if (sesion.getAttribute("tipo").equals("Cliente")) {
+                        System.out.println("entro cliente "+productos.size());
                         request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
                     }
                 }else{

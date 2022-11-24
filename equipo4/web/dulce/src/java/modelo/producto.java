@@ -10,11 +10,11 @@ package modelo;
  * @author SENA
  */
 public class producto {
-    public String getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(String Id) {
+    public void setId(int Id) {
         this.Id = Id;
     }
 
@@ -57,10 +57,12 @@ public class producto {
     public void setStock(int stock) {
         this.stock = stock;
     }
-    private String Id;
+    
+    private int Id;
     private String nombre;
     private String foto;
     private String descripcion;
     private int precio;
     private int stock;
+
 }

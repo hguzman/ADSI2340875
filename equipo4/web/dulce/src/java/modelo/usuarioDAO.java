@@ -38,6 +38,7 @@ public class usuarioDAO {
                     usua.setNombre(rs.getString("Nombre"));
                     usua.setApellido(rs.getString("Apellido"));
                     usua.setDireccion(rs.getString("Direccion"));
+                    usua.setTelefono(rs.getString("Telefono"));
                     usua.setUsuario(rs.getString("Usuario"));
                     usua.setContrasena(rs.getString("Contrasena"));
                     usua.setTipo(rs.getString("Tipo"));
@@ -49,40 +50,40 @@ public class usuarioDAO {
         }
             return usua;
     }
-         public List listar(){
-             ArrayList<usuario>list = new ArrayList<>();
-             try{
-                 conexion = new Conectar();
-                 con = conexion.crearconexion();
-                 if (con != null){
-                     System.out.println("se ha establecido conexcion a la base de datos ");
-                 }
+        public List listar(){
+            ArrayList<usuario>list = new ArrayList<>();
+            try{
+                conexion = new Conectar();
+                con = conexion.crearconexion();
+                if (con != null){
+                    System.out.println("se ha establecido conexcion a la base de datos ");
+                }
                  pstm = con.prepareStatement("select * from usuarios");
-                 rs = pstm.executeQuery();
-                 while(rs.next()){
-                     usuario usu = new usuario();
-                     usu.setId(rs.getString(1));
-                     
-                     usu.setNombre(rs.getString(2));
-                     usu.setApellido(rs.getString(3));
-                     usu.setCorreo(rs.getString(4));
-                     usu.setDireccion(rs.getString(5));
-                     usu.setTelefono(rs.getString(6));
-                     usu.setUsuario(rs.getString(7));
-                     usu.setContrasena(rs.getString(8));
-                     usu.setTipo(rs.getString(9));
-                     list.add(usu);
-                     
-                     
-                 }
-                 
-             }catch(Exception e){
-                 
-             }
-             return list;
-         }
+                rs = pstm.executeQuery();
+                while(rs.next()){
+                    usuario usu = new usuario();
+                    usu.setId(rs.getString(1));
+                    
+                    usu.setNombre(rs.getString(2));
+                    usu.setApellido(rs.getString(3));
+                    usu.setCorreo(rs.getString(4));
+                    usu.setDireccion(rs.getString(5));
+                    usu.setTelefono(rs.getString(6));
+                    usu.setUsuario(rs.getString(7));
+                    
+                    usu.setTipo(rs.getString(9));
+                    list.add(usu);
+                    
+                    
+                }
+                
+            }catch(Exception e){
+                
+            }
+            return list;
+        }
 
-         public usuario list(String id) {
+        public usuario list(String id) {
         usuario usu = new usuario();
         try {
             conexion = new Conectar();
@@ -132,6 +133,50 @@ public class usuarioDAO {
             System.out.println("Datos insertados correctamente");
         }catch(Exception e){
             System.out.println("Error al insertar los datos");
+        }
+        return true;
+    }
+    
+    public boolean editar(usuario us){
+        
+            try{
+            conexion = new Conectar();
+            con = conexion.crearconexion();
+            if (con != null){
+                System.out.println("se ha establecido la conexion a la base de datos ");
+            }
+            pstm = con.prepareStatement("update usuarios set nombre = ?, apellido =  ?, correo = ?, telefono = ?, direccion = ?, usuario = ?, contrasena = ?, tipo = ? where id = ?");
+            
+            pstm.setString(1, us.getNombre());
+            pstm.setString(2, us.getApellido());
+            pstm.setString(3, us.getCorreo());
+            pstm.setString(4, us.getTelefono());
+            pstm.setString(5, us.getDireccion());
+            pstm.setString(6, us.getUsuario());
+            pstm.setString(7, us.getContrasena());
+            pstm.setString(8, us.getTipo());
+            pstm.setString(9, us.getId());
+            pstm.executeUpdate();
+            System.out.println("Datos modificar correctamente");
+        }catch(Exception e){
+            System.out.println("Error al modificar los datos");
+        }
+        return true;
+    }
+    
+    public boolean eliminar(String id){
+        try{
+            conexion = new Conectar();
+            con = conexion.crearconexion();
+            if (con != null){
+                System.out.println("se ha establecido la conexion a la base de datos ");
+            }
+            pstm = con.prepareStatement("Delete from usuarios where id = ?");
+            pstm.setString(1, id);
+            pstm.executeUpdate();
+            System.out.println("Datos eliminados correctamente");
+        }catch(Exception e){
+            System.out.println("Error al eliminar los datos");
         }
         return true;
     }
