@@ -1,0 +1,12 @@
+{
+    "elements": {
+        "style": {}
+    },
+    "attributes": {
+        "aria-current": {},
+        "integrity": {
+            "context": "link"
+        },
+        "focusable": {}
+    }
+}
