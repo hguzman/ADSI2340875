@@ -98,6 +98,6 @@ public class usuario {
     private String contrasena;
     private String tipo;
 
-   
+
     
 }

@@ -97,18 +97,22 @@ public class validar extends HttpServlet {
                 sesion.setAttribute("id", usuari.getId());
                 sesion.setAttribute("tipo", usuari.getTipo());
                 sesion.setAttribute("usuario", usuari);
-                if(usuari.getTipo().equals("administrador")){
-                    response.sendRedirect("/dulce/vistas/Administrador.jsp");
+                if(usuari.getTipo().equals("Administrador")){
+                    response.sendRedirect("/dulce/CtrProducto?accion=home");
                 }
-                if(usuari.getTipo().equals("cliente")){
-                    response.sendRedirect("/dulce/vistas/Cliente.jsp");
+                if(usuari.getTipo().equals("Cliente")){
+                    response.sendRedirect("/dulce/CtrProducto?accion=home");
                 }
                 
             }else{
-                 response.sendRedirect("/dulce/vistas/login.jsp?ingreso=0");
+                response.sendRedirect("/dulce/vistas/login.jsp?ingreso=0");
             }
         }
-       
+        if(accion.equalsIgnoreCase("Registrarse")){
+                response.sendRedirect("/dulce/vistas/CrearUsuario.jsp?ingreso=0");
+            
+        }
+        
     }
 
     /**

@@ -1,9 +1,8 @@
 <%-- 
-    Document   : ListarUsuario
-    Created on : 30/09/2022, 09:22:52 AM
+    Document   : ListarProducto
+    Created on : 11/11/2022, 08:51:30 AM
     Author     : HPLAPTOP01
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,8 +12,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"  crossorigin="anonymous">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"  crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-        <title>Listar Usuarios</title>
+        <title>Listar Producto</title>
     </head>
+    
     <body style="background: buttonface">
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -23,7 +23,7 @@
                 <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link active dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dulceria
+                            Dulceria
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dulce/CtrProducto?accion=Listar"  data-bs-target="#item"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Productos</a></li>
@@ -58,7 +58,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item text-center" href="#">
-                                        <img src="/dulce/img/usu.jpg" alt="60" width ="60"/>
+                                        <img src="/dulce/img/usuario4-peque.png" alt="60" width ="60"/>
                                     </a></li>
                                 <li><a class="dropdown-item text-center" href="#">${usuario.getUsuario()}</a></li>
                                 <li><a class="dropdown-item text-center" href="#">${usuario.getTipo()}</a></li>
@@ -94,39 +94,37 @@
             <table class="table" >
                 <thead class="thead-dark border">
                     <tr>
-                        <th scope="col" colspan="8" class ="text-center border">Usuarios</th>
-                        <th scope="col" class ="text-center border"> <a class="btn btn-primary ml-2" href="/dulce/vistas/CrearUsuario.jsp"><i class="fa fa-user-plus" aria-hidden ="true"></i></a></th>
+                        <th scope="col" colspan="6" class ="text-center border">Productos</th>
+                        <th scope="col" class ="text-center border"> <a class="btn btn-primary ml-2" href="/dulce/vistas/crearproducto.jsp"><i class="fa fa-user-plus" aria-hidden ="true"></i></a></th>
                     </tr>
                     <tr>
                         <th scope="col" class="text-center border">Id</th>
                         <th scope="col" class="text-center border">Nombre</th>
-                        <th scope="col" class="text-center border">Apelido</th>
-                        <th scope="col" class="text-center border">Correo</th> 
-                        <th scope="col" class="text-center border">Direccion</th>
-                        <th scope="col" class="text-center border">Telefono</th>
-                        <th scope="col" class="text-center border">Usuario</th>
-                        
-                        <th scope="col" class="text-center border">Tipo</th>
+                        <th scope="col" class="text-center border">Foto</th>
+                        <th scope="col" class="text-center border">Descripcion</th> 
+                        <th scope="col" class="text-center border">Precio</th>
+                        <th scope="col" class="text-center border">Stock</th>
                         <th scope="col" class="text-center border">Acciones</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
 
-                    <c:forEach var="usu" items="${usuario1}">
+                    <c:forEach var="pro" items="${producto}">
                         <tr>
-                            <th scope="row" class="border">${usu.getId()}</th>
-                            <td class="border">${usu.getNombre()}</td>
-                            <td class="border">${usu.getApellido()}</td>
-                            <td class="border">${usu.getCorreo()}</td>
-                            <td class="border">${usu.getDireccion()}</td>
-                            <td class="border">${usu.getTelefono()}</td>
-                            <td class="border">${usu.getUsuario()}</td>
+                            <th scope="row" class="border">${pro.getId()}</th>
+                            <td class="border">${pro.getNombre()}</td>
+                            <td class="border"><img src="${pro.getFoto()}" width="100" height="80" alt="imagen del producto"</td>
+                            <td class="border">${pro.getDescripcion()}</td>
+                            <td class="border">${pro.getPrecio()}</td>
+                            <td class="border">${pro.getStock()}</td>
                             
-                            <td class="border">${usu.getTipo()}</td>
+                            
+                            
                             <td scope="col" class ="text-center border">
                                 <input type="hidden" name="id" id="id" value="${usu.getId()}">
-                                <a class="btn btn-warning" href="/dulce/ctrlUsuario?accion=editar&id=${usu.getId()}"><i class="fa fa-pencil" aria-hidden ="true"></i></a> 
-                                <a class="btn btn-danger" href="#" id="delusuario" ><i class="fa fa-trash" aria-hidden ="true"></i></a>
+                                <a class="btn btn-warning" href="/dulce/CtrProducto?accion=editar&id=${pro.getId()}"><i class="fa fa-pencil" aria-hidden ="true"></i></a> 
+                                <a class="btn btn-danger" href="#" id="delpro" ><i class="fa fa-trash" aria-hidden ="true"></i></a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -136,6 +134,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="/dulce/JS/Funciones2.js" type="text/javascript"></script>
+        <script src="/dulce/JS/imagen.js" type="text/javascript"></script>
+        <script src="/dulce/JS/eliminar_pro.js" type="text/javascript"></script>
     </body>
 </html>
+

@@ -16,7 +16,7 @@ public class car {
         this.cantidad = cantidad;
         this.subtotal = subtotal;
     }
-   private int item;
+    private int item;
 
     public int getItem() {
         return item;
@@ -81,11 +81,11 @@ public class car {
     public void setSubtotal(int subtotal) {
         this.subtotal = subtotal;
     }
-   private int idproducto;
-   private String nombre;
-   private String descripcion;
-   private String foto;
-   private int preciocompra;
-   private int cantidad;
-   private int subtotal;
+    private int idproducto;
+    private String nombre;
+    private String descripcion;
+    private String foto;
+    private int preciocompra;
+    private int cantidad;
+    private int subtotal;
 }

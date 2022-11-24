@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,21 +16,22 @@
         
         <title>Cliente</title>
     </head>
-    <body>
+    <body style="background: buttonface">
         <%
         /*if(session.getAttribute("log")==null || session.getAttribute("log").equals('o') || !session.getAttribute("tipo").equals("Cliente")){
             response.sendRedirect("login.jsp");
         }*/
-        
-        
+
+
     %>
     <body style="background: pink;">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
+                
                 <ul class="navbar-nav">
                         <li class="nav-item ">
                             <a class="nav-link active " href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            DULCERIA
+                                DULCERIA
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dulce/CtrProducto?accion=Listar"  data-bs-target="#item"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Productos</a></li>
@@ -78,6 +80,7 @@
                 </div>
             </div>
         </nav>
+
         <div class="container mt-2">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
@@ -90,7 +93,7 @@
                     <img src="/dulce/img/dulces.jpg" class="d-block w-100 " alt="..." height="400" >
                 </div>
                 <div class="carousel-item">
-                <img src="/dulce/img/gomitas.jpg" class="d-block w-100" alt="..." height="400">
+                    <img src="/dulce/img/gomitas.jpg" class="d-block w-100" alt="..." height="400">
                 </div>
                 <div class="carousel-item">
                     <img src="/dulce/img/galletas_muu.jpg" class="d-block w-100" alt="..." height="400">
@@ -105,6 +108,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        <div>
             <div class="row mt-5">
                 
                 
@@ -122,7 +126,7 @@
                             <div class="card-footer text-center">
                                 <label>${p.getDescripcion()}</label>
                                 <div>
-                                    <a href="/dulce/CtrProducto?accion=agregarcarrito&id=${p.getId()}" class="btn btn-outline-info"><i class="fa fa-shopping-cart"></i> Agregar Carrito</a>
+                                    <a href="/dulce/CtrProducto?accion=pedido&idus=${p.getId()}" class="btn btn-outline-info"><i class="fa fa-shopping-cart"></i> Agregar Carrito</a>
                                     <a href="/dulce/CtrProducto?accion=Comprar&id=${p.getId()}" class="btn btn-primary bg-primary">Comprar</a>
                                 </div>
                             </div>
@@ -131,7 +135,10 @@
                 </c:forEach>
                 
             </div>
+        
         </div>
+                        
+
         
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

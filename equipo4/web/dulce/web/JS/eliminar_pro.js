@@ -1,22 +1,26 @@
-
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 $(document).ready(function () {
-    $("tr #btndelete").click(function () {
-        var id = $(this).parent().find("#idp").val();
+    $("tr #delpro").click(function () {
+        var id = $(this).parent().find("#id").val();
         swal({
             title: "Esta seguro de eliminar el producto?",
             text: "Una vez eliminado, no podra recuperarlo!",
-            icon: "warning",
+            icon: "danger",
             buttons: true,
             dangerMode: true,
         })
                 .then((willDelete) => {
                     if (willDelete) {
-                        eliminar(id);
+                        eliminarpro(id);
                         swal("El producto! ha sido eliminado!", {
                             icon: "success",
                         }).then((willDelete)=>{
                             if (willDelete){
-                                parent.location.href="CtrProducto?accion=carrito";
+                                parent.location.href="CtrProducto?accion=Listar";
                             }
                         });
                     } else {
@@ -25,30 +29,18 @@ $(document).ready(function () {
                 });
     });
     
-    function eliminar(id){
-        var url="CtrProducto?accion=Delete";
+    function eliminarpro(id){
+            var url="CtrProducto?accion=Eliminar";
         $.ajax({
             type: 'post',
             url: url,
-            data: "idp="+id,
+            data: "id="+id,
             success: function (data, textStatus, jqXHR){
                 
             }
         });
     }
     
-    $("tr #cantidad").click(function(){
-        var idp = $(this).parent().find("#idpro").val();
-        var cantidad = $(this).parent().find("#cantidad").val();
-        var url = "CtrProducto?accion=ActualizarCantidad";
-        $.ajax({
-            type: 'post',
-            url: url,
-            data: "idp="+idp +"&Cantidad="+Cantidad,
-            success: function (data, textStatus, jqXHR){
-                location.href="CtrProducto?accion=Carrito";
-            }
-        });
-    });
+    
 });
 

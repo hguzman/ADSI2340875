@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+        <link href="/dulce/CSS/login.css" rel="stylesheet" type="text/css"/>
         <title>Login</title>
     </head>
     <% String Mensaje = "";
@@ -42,7 +43,8 @@
                             <lable> Contraseña</lable>
                             <input type="password" name="contrasena" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
+                        <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block ">
+                        <input type="submit" name="accion" value="Registrarse" class="btn btn-success btn-block mt-2">
                     </form>
                 </div>
             </div>

@@ -33,8 +33,9 @@ public class ctrlUsuario extends HttpServlet {
      * @throws ServletException if a s ervlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-          usuarioDAO dao = new usuarioDAO();
-           
+        usuarioDAO dao = new usuarioDAO();
+        String id, nom, ape, dir, tel, cor, usu, pas, tip;
+            
             protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -64,7 +65,7 @@ public class ctrlUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id, nom, ape, dir, tel, cor, usu, pas, tip;
+        
         usuario us = new usuario();
         usuarioDAO dao = new usuarioDAO();
         List<usuario> list = dao.listar();
@@ -106,6 +107,42 @@ public class ctrlUsuario extends HttpServlet {
                 dao.crear(us);
                 list = dao.listar();
                 request.setAttribute("usuario1", list);
+                request.getRequestDispatcher("vistas/ListarUsuario.jsp").forward(request, response);
+                break;
+            case "Actualizar":
+                id = request.getParameter("id");
+                nom = request.getParameter("nombre");
+                ape = request.getParameter("apellido");
+                dir = request.getParameter("direccion");
+                tel = request.getParameter("telefono");
+                cor = request.getParameter("correo");
+                usu = request.getParameter("usuario");
+                pas = request.getParameter("contrasena");
+                tip = request.getParameter("tipo");
+                
+                us.setId(id);
+                us.setNombre(nom);
+                us.setApellido(ape);
+                us.setDireccion(dir);
+                us.setTelefono(tel);
+                us.setCorreo(cor);
+                us.setUsuario(usu);
+                us.setContrasena(pas);
+                us.setTipo(tip);
+                
+                dao.editar(us);
+                list = dao.listar();
+                request.setAttribute("usuario1", list);               
+                
+                System.out.println("actualizo");
+                request.getRequestDispatcher("vistas/ListarUsuario.jsp").forward(request, response);
+                break;
+            case "Eliminar":
+                id = request.getParameter("id");
+                dao.eliminar(id);
+                list = dao.listar();
+                request.setAttribute("usuario1", list);
+                System.out.println("elimino");
                 request.getRequestDispatcher("vistas/ListarUsuario.jsp").forward(request, response);
                 break;
             default:
