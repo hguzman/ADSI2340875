@@ -28,8 +28,29 @@ class Draws extends StatelessWidget {
               },
               leading: Icon(Icons.verified_user),
               title: Text('Registro de usuario'),
-              trailing: Icon(Icons.fork_right_rounded),
-            )
+              trailing: Icon(Icons.arrow_right),
+            ),
+            Center(
+              child: Text('Categorias',style: TextStyle(
+                color: Color.fromARGB(255, 2, 12, 70),
+                fontSize: 20.0
+              ),),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/decoracion');
+              },
+              leading: Icon(Icons.image_aspect_ratio_rounded),
+              title: Text('Decoracion'),
+              trailing: Icon(Icons.arrow_right),
+            ),ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/recordatorio');
+              },
+              leading: Icon(Icons.image_aspect_ratio_rounded),
+              title: Text('Recordatorio'),
+              trailing: Icon(Icons.arrow_right),
+            ),
           ],
         ),
       );

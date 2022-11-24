@@ -9,7 +9,7 @@ class Record extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Center(child: Text('DECORACIONES'))),
+        title: Center(child: Center(child: Text('Recordatorios'))),
         backgroundColor: Color.fromARGB(129, 3, 29, 58),
       ),
       body: SingleChildScrollView(

@@ -1,31 +1,18 @@
-main{
-  border: 1px solid #000;
-  width: 700px;
-  height: 800px;
-  text-align: center;
-  
+.borde{
+  width: 750px;
+  height: 850px;
+  background: white;
+  margin-top: 20px;
 }
-
-#main2{
-  margin-top: 10px;
-  border: 1px solid #000;
-  width: 700px;
-  height: 880px;
-  
-}
-#main3{
-  margin-top: 10px;
-  border: 1px solid #000;
-  width: 700px;
-  height: 880px;
-}
-h2{
-  margin-right: 500px;
+.ult{
+  width: 750px;
+  height: 950px;
+  background: white;
+  margin-top: 20px;
 }
 
 
-
-img{
+#logosena{
     margin-top: 40px;
     width: 200px;
     height: 200px;
@@ -41,14 +28,13 @@ hr{
 }
 
 #par1{
- margin-top: 355px;
+ margin-top: 400px;
 }
 
 #fin{
   margin-top: 200px;
 
 }
-
 
 #txt3{
   display: inline-block;
@@ -57,13 +43,41 @@ hr{
 #txt4{
   display: inline-block;
 }
-#des{
-  margin-top: 10px;
-  margin-right: 500px;
-  display: block;
-}
+
 
 #icone{
-  width: 600px;
-  height: 350px;
+  width: 500px;
+  height: 300px;
+}
+
+#casoUso{
+  margin-right: 300px;
+}
+
+body{
+  height: auto;
+  background: grey;
+}
+
+.doc{
+  margin-right: 290px;
+}
+
+#izq{
+  margin-top: 130px;
+  margin-right: 210px;
+}
+table,td,tr {
+	border-collapse: collapse;
+  border: black 1px solid;
+  text-align: center;
+ 
+}
+
+ul,li{
+  margin: 20px;
+  text-align: left;
+}
+.TR{
+  margin-right: 210px;
 }

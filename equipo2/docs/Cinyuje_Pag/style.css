@@ -1,0 +1,36 @@
+.top{
+  margin-top: 100px;
+
+}
+
+body{
+  background: url(../imagenes/img_azul.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.list-group-item{
+  color: black;
+}
+
+.card-body{
+  background-color: white;
+  color: black;
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-thumb{
+  background: rgb(1, 17, 36);
+  border-radius: 4px;
+}
+
+.scroll::-webkit-scrollbar{
+  width: 8px;
+}
+
+.scroll::-webkit-scrollbar-thumb{
+  background: rgb(1, 17, 36);
+  border-radius: 4px;
+}
