@@ -60,6 +60,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/PROYECTOFARMACIA/CtrProducto?accion=carrito"><i class="fa fa-shopping-cart">(<label style="color: darkorange">${contador}</label>)</i>Carrito </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/PROYECTOFARMACIA/CtrProducto?accion=Ayuda"><i class="fa fa-question"><label style="color: darkorange">${contador}</label></i>Ayuda </a>
+                        </li>
                     </ul>
                     <form class="d-flex" action="/PROYECTOFARMACIA/CtrProducto?accion=buscar" method="POST">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="busqueda">

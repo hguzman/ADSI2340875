@@ -33,18 +33,18 @@
                             <h3>FarmaVision</h3>
                             <img src="../img/login.png" width="100px" height="100px" alt=""/>
                             
-                            <lable>Ingresa tu cuenta</lable>
+                            <h3>Ingresa tu cuenta</h3>
                         </div>
                         <div class="form-group">
                             <lable> Usuario</lable>
-                            <input type="text" name="usuario" class="form-control">
+                            <input type="text" name="usuario" class="form-control" >
                         </div>
                         <div class="form-group">
                             <lable> Contraseña</lable>
                             <input type="password" name="contrasena" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
-                        <input type="submit" value="Registrar" class="btn-block" >
+                        <label>¿No tienes cuenta?    <a href="/PROYECTOFARMACIA/vistas/regisnuevousu.jsp?accion=nuevo" >Crear una cuenta</a></label> 
                     </form>
                 </div>
             </div>

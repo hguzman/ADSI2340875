@@ -5,12 +5,21 @@
  */
 package controlador;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileInputStream;
 import modelo.productoDAO;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -108,9 +117,58 @@ public class CtrProducto extends HttpServlet {
                         dped.setCantidad(listacar.get(i).getCantidad());
                         dpdao.crear(dped);
                 }
-                       
                     
                     
+                    Properties propiedad = new Properties();
+                    propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+                    propiedad.setProperty("mail.smtp.starttls.enable", "true");
+                    propiedad.setProperty("mail.smtp.port", "587");
+                    propiedad.setProperty("mail.smtp.auth", "true");
+                    Session sesion1 = Session.getDefaultInstance(propiedad);
+                    
+                    String Correoenvio = "oscarmarquez0603@gmail.com";
+                    String Contraseña = "tdacudrehllfszcp";
+                    String Destinatario = "frenesii25@gmail.com";
+                    String Asunto = "pedido generado jimmy";
+                    String Mensaje = "datos del pedido me estoy muriendo porfa rapido el medicamento";
+                    MimeMessage mail = new  MimeMessage(sesion1);
+                    
+                    try{
+                        mail.setFrom(new InternetAddress(Correoenvio));
+                        mail.addRecipient(Message.RecipientType.TO, new InternetAddress(Destinatario));
+                        mail.setSubject(Asunto);
+                        mail.setText(Mensaje);
+                        Transport transporte = sesion1.getTransport("smtp");
+                        transporte.connect(Correoenvio, Contraseña);
+                        transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                        transporte.close();
+                        
+                        System.out.println("Correo enviado" );
+                    }catch(Exception e){
+                        System.out.println("Error al enviar en correo: " +e);
+                    }
+                  listacar.removeAll(listacar);
+                  request.getRequestDispatcher("CtrProducto?accion=carrito").forward(request, response);
+                    
+                    
+                   
+                break;
+                
+            case "Ayuda":
+                File documento = new File ("C:\\Users\\SENA\\Documents\\puntos criticos.pdf");
+                try{
+                    FileInputStream archivo = new FileInputStream (documento.getPath());
+                    int tamanoinput = archivo.available();
+                    byte[] datosPDF = new byte [tamanoinput];
+                    archivo.read(datosPDF, 0, tamanoinput);
+                    response.setHeader("Content-disposition", "download; filename=instalacion_tomcat.pdf");
+                    response.setContentType("application/pdf");
+                    response.setContentLength(tamanoinput);
+                    response.getOutputStream().write(datosPDF);
+                    archivo.close();
+                }catch(Exception e){
+                    System.out.println("No se pudo abrir el archivo: " + e);
+                }
                 break;
                    
                 case"editar":

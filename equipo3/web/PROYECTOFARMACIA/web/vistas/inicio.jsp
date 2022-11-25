@@ -50,9 +50,7 @@
                             <a class="nav-link" href="#">Oferta del dia</a>
                         </li>
                         
-                        <li class="nav-item">
-                            <a class="nav-link" href="/PROYECTOFARMACIA/CtrProducto?accion=carrito"><i class="fa fa-shopping-cart">(<label style="color: darkorange">${contador}</label>)</i>Carrito </a>
-                        </li>
+                        
                     </ul>
                     <form class="d-flex" action="/PROYECTOFARMACIA/CtrProducto?accion=buscar" method="POST" >
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="busqueda" >
@@ -61,11 +59,11 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Mi cuenta
+                               <img src="/PROYECTOFARMACIA/img/login.png" alt="40" width ="40"/> Mi cuenta
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item text-center" href="#">
-                                        <img src="/PROYECTOFARMACIA/img/login.png" alt="60" width ="60"/>
+                                        
                                     </a></li>
                                
                                 <li><hr class="dropdown-divider"></li>

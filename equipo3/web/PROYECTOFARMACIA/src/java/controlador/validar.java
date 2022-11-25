@@ -107,6 +107,7 @@ public class validar extends HttpServlet {
             }else{
                  response.sendRedirect("../PROYECTOFARMACIA/vistas/login.jsp?ingreso=0");
             }
+           
             
         }
         

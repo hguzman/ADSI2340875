@@ -146,6 +146,32 @@ public class CtrUsuario extends HttpServlet {
                 request.setAttribute("usuario1", List);
                 request.getRequestDispatcher("vistas/listarusuario.jsp").forward(request, response);
                 break;
+                 case "nuevos":
+                id = request.getParameter("id");
+                nom = request.getParameter("nombre");
+                ape = request.getParameter("apellido");
+                dir = request.getParameter("direccion");
+                tel = request.getParameter("telefono");
+                cor = request.getParameter("correo");
+                usu = request.getParameter("usuario");
+                pas = request.getParameter("contrasena");
+                tip = request.getParameter("tipo");
+                
+                us.setId(id);
+                us.setNombre(nom);
+                us.setApellido(ape);
+                us.setDireccion(dir);
+                us.setTelefono(tel);
+                us.setCorreo(cor);
+                us.setUsuario(usu);
+                us.setContrasena(pas);
+                us.setTipo(tip);
+                
+                dao.crear(us);
+                List = dao.Listar();
+                request.setAttribute("usuario1", List);
+                request.getRequestDispatcher("vistas/index.jsp").forward(request, response);
+                break;
             case "Actualizar":
                 id = request.getParameter("id");
                 nom = request.getParameter("nombre");
