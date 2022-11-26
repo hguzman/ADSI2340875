@@ -50,6 +50,11 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Oferta del día</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" target="_blank" href="/Proyecto_Cinyuje/CtrProducto?accion=Ayuda">Ayuda <i class="fa fa-info-circle" aria-hidden="true"></i>
+
+</a>
+                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="/Proyecto_Cinyuje/CtrProducto?accion=Carrito">Carrito <i class="fas fa-shopping-cart">(<label style="color: darkorange">${contador}</label>)</i></a>
