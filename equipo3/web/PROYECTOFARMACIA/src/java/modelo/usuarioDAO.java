@@ -200,7 +200,7 @@ public boolean eliminar(String id){
         if (con != null) {
             System.out.println("se establecio conexion a la base datos");
         }
-        pstm = con.prepareStatement("Delete from usuarios where idp =?");
+        pstm = con.prepareStatement("Delete from usuarios where Id =?");
         pstm.setString(1, id);
         pstm.executeUpdate();
         System.out.println("usuario eliminado correctamente");

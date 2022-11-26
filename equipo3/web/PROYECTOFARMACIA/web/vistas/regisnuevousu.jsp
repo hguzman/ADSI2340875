@@ -98,7 +98,7 @@
                                 <div class ="col formulario__grupo" id="grupo__tipo">
                                     <label for="tipo" class="formulario__label" >Tipo</label>
                                     <select class="form-control" name="tipo">
-                                        <option value="Cliente">Cliente</option>
+                                        <option value="cliente">Cliente</option>
                                         
                                     </select></br>
                                 </div>
@@ -137,7 +137,7 @@
                              <div class="form-row">
                                 <!-- botones-->
                                 <div class ="col mt-2 text-center formulario__grupo-btn-enviar">
-                                    <button type="submit" class="btn btn-primary formulario__btn" name="accion" value="nuevo">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button> 
+                                    <button type="submit" class="btn btn-primary formulario__btn" name="accion" value="nuevos">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button> 
                                     <a class="btn btn-danger formulario__btn" name="regresar" href="/PROYECTOFARMACIA/CtrUsuario?accion=Listar">Regresar <i class="fa fa-undo" aria-hidden="true"></i></a>
                                     <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Informacion enviada exitosamente</p>
                                 </div>

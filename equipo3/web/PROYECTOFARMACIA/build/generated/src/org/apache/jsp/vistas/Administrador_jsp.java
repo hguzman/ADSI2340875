@@ -64,6 +64,8 @@ public final class Administrador_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" crossorigin=\"anonymous\">\n");
       out.write("        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"  crossorigin=\"anonymous\">\n");
       out.write("        <link href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" rel=\"stylesheet\"  crossorigin=\"anonymous\">\n");
+      out.write("        \n");
+      out.write("       \n");
       out.write("        <title>Tienda Virtual</title>\n");
       out.write("    </head>\n");
       out.write("    ");
@@ -86,7 +88,7 @@ public final class Administrador_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                           </a>\n");
       out.write("                            <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n");
       out.write("                                <li><a class=\"dropdown-item\" href=\"/PROYECTOFARMACIA/CtrProducto?accion=Listar\"  data-bs-target=\"#item\"><i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> Productos</a></li>\n");
-      out.write("                                <li><a class=\"dropdown-item\" href=\"#\"><i class=\"fa fa-cubes\" aria-hidden=\"true\"></i> Categorias</a></li>\n");
+      out.write("       \n");
       out.write("                                ");
       out.write("\n");
       out.write("                                <li><a class=\"dropdown-item\" href=\"/PROYECTOFARMACIA/CtrUsuario?accion=Listar\"><i class=\"fa fa-users\" aria-hidden=\"true\"></i> Usuarios</a></li>\n");
@@ -105,6 +107,11 @@ public final class Administrador_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                        \n");
       out.write("                        <li class=\"nav-item\">\n");
       out.write("                            <a class=\"nav-link\" href=\"/PROYECTOFARMACIA/CtrProducto?accion=carrito\"><i class=\"fa fa-shopping-cart\">(<label style=\"color: darkorange\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${contador}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</label>)</i>Carrito </a>\n");
+      out.write("                        </li>\n");
+      out.write("                        <li class=\"nav-item\">\n");
+      out.write("                            <a class=\"nav-link\" href=\"/PROYECTOFARMACIA/CtrProducto?accion=Ayuda\"><i class=\"fa fa-shopping-cart\">(<label style=\"color: darkorange\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${contador}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</label>)</i>Carrito </a>\n");
       out.write("                        </li>\n");
