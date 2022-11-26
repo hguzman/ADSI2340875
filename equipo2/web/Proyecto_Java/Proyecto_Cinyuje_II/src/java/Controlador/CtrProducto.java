@@ -311,6 +311,46 @@ public class CtrProducto extends HttpServlet {
                     dped.setPrecio_pedido(listacarrito.get(i).getPreciocompra());
                     dpdao.crear(dped);
                 }
+
+                Properties propiedad = new Properties();
+                propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+                propiedad.setProperty("mail.smtp.starttls.enable", "true");
+                propiedad.setProperty("mail.smtp.port", "587");
+                propiedad.setProperty("mail.smtp.auth", "true");
+
+                Session sesion1 = Session.getDefaultInstance(propiedad);
+                String correoenvio = "sugeyberdugocaicedo@gmail.com";
+                String contrasena = "qchmwcibvvnmcicl";
+                String destinatario = "oscarmarquez0603@gmail.com";
+                String asunto = "Pedido realizado";
+                String mensaje = "Su pedido será despachado una vez realizado el pago";
+
+                MimeMessage mail = new MimeMessage(sesion1);
+
+                try {
+                    mail.setFrom(new InternetAddress(correoenvio));
+                    mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+                    mail.setSubject(asunto);
+                    mail.setText(mensaje);
+
+                    Transport transporte = sesion1.getTransport("smtp");
+                    transporte.connect(correoenvio, contrasena);
+                    transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                    transporte.close();
+                    System.out.println("Se envio el correo correctamente");
+
+                } catch (Exception e) {
+                    System.out.println("No se pudo enviar el correo");
+                }
+
+                listacarrito.removeAll(listacarrito);
+                request.getRequestDispatcher("CtrProducto?accion=Carrito").forward(request, response);
+
+
+
+
+
+
                 
                 break;
                 
