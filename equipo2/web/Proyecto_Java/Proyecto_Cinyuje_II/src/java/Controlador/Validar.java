@@ -107,10 +107,11 @@ public class Validar extends HttpServlet {
             
             if (usu.getTipo().equals("Administrador")) {
                 response.sendRedirect("/Proyecto_Cinyuje/CtrProducto?accion=home");
+                System.out.println("Ingreso a vista admin productos");
             }
             
             if (usu.getTipo().equals("Cliente")) {
-                response.sendRedirect("../Proyecto_Cinyuje/Vistas/Ventas_Cliente.jsp");
+                response.sendRedirect("/Proyecto_Cinyuje/CtrProducto?accion=home");
             }
                  
         } else{
