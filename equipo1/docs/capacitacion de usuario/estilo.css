@@ -12,6 +12,12 @@ body {
     background-attachment: fixed;  
     background-size: cover;
   }
-  h1{
+h1{
     color: black;
   }
+
+
+
+#th2{
+  border: 2px solid black;
+}
