@@ -1,0 +1,71 @@
+
+  body {
+   background: aqua;
+}
+
+.top{
+  margin-top: 180px;
+}
+
+.img-fondo{
+  margin-bottom: 50px;
+}
+@media (max-width: 1024px) {
+  .ml-auto {
+    margin-right: 100% !important;
+  }
+}
+button a{
+  color: white;
+}
+.i1{
+  margin-left: 105px;
+  margin-top: 20px;
+}
+.i2{
+  margin-left: 105px;
+  margin-top: 20px;
+}
+
+ 
+P{
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+
+}
+
+#card1{
+  margin-top: 100px;
+  text-align: center;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+table,td,tr{
+  border: solid 2px black;
+  border-collapse: collapse;
+  margin-top: 70px;
+  text-align: center;
+
+ }
+
+
+tr{
+  background-color: white;
+  
+}
+
+#imagen2{
+  background-image: url("imagen/imagen3.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+}
+
+
+
+#tabla2{
+  width: 600px;
+  height: 400px;
+  margin-left: 400px;
+}
