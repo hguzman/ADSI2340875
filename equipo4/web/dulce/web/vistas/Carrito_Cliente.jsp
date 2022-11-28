@@ -3,8 +3,8 @@
     Created on : 23/11/2022, 07:38:09 AM
     Author     : HPLAPTOP01
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +18,7 @@
     <body style="background-color: buttonface">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
+
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,6 +32,7 @@
                         </ul>
                     </li>
                 </ul>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -39,6 +41,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Oferta del dia</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="/dulce/CtrProducto?accion=home"> Seguir Comprando </a>
                         </li>
@@ -72,6 +75,7 @@
         <div class="container mt-4"> 
             <h3>Carrito</h3>
             <br>
+
             <div class="row">
                 <div class="col-sm-8">
                     <table class="table table-hover">
@@ -122,15 +126,16 @@
                                 <input type="text" readonly="true" value="${totalpagar}" class="form-control">
                             </div>
                             <div class="card-footer">
-                                <a href="/dulce/CtrProducto?accion=pedido&idus=${usuario.getId()}" class="btn btn-info btn-block"> Realizar pedido </a>
-                                <a href="#" class="btn btn-danger btn-block"> Generar pedido</a>
+                                <a href="/dulce/CtrProducto?accion=pedido&idus=${usuario.getId()}" onclick="print()" class="btn btn-info btn-block"> Realizar pedidos </a>
+                                 <a href="#" class="btn btn-danger btn-block"> Generar pedido</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>              
         <script src="/dulce/JS/Funciones.js" type="text/javascript"></script>

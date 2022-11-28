@@ -5,6 +5,9 @@
  */
 package controlador;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileInputStream;
 import modelo.productoDAO;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -13,6 +16,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import java.util.List;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,111 +81,112 @@ public class CtrProducto extends HttpServlet {
         //***segunda clase**
         producto p = new producto();
         productoDAO dao = new productoDAO();
-        List<producto> list = pdao.listar();
+        List<producto> list = dao.listar();
+       // System.out.println("accion= "+accion);
         switch (accion) {
-            case "Listar":
+           case "Listar":
                 productos = pdao.listar();
                 request.setAttribute("producto", productos);
                 request.getRequestDispatcher("vistas/ListarProducto.jsp").forward(request, response);
                 System.out.println("Entro en ctrproducto" + "\n");
                 break;
                 
-            case "buscar":
-                String nombre = request.getParameter("busqueda");
-                productos = pdao.buscar(nombre);
-                request.setAttribute("producto", productos);
-                    if (sesion.getAttribute("tipo").equals("administrador")) {  
-                        System.out.println("item2: "+sesion.getAttribute("tipo"));
-                        System.out.println("producto: "+ productos.size());
-                        request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
-                    }
-                    if(sesion.getAttribute("tipo").equals("Cliente")) {  
-                        request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
-                    }
-                break;
-                
-            case "agregarcarrito":
-                int pos = 0;
-                cantidad = 1;
-                idp =Integer.parseInt(request.getParameter("id"));
-                p = pdao.listarId(idp);
-                if(listacar.size() > 0 ){
-                    for(int i= 0; i < listacar.size(); i++){
-                        if(idp == listacar.get(i).getIdproducto()){
-                        pos =i;   
-                        }
-                    }
-                    if(idp == listacar.get(pos).getIdproducto()){
-                        cantidad = cantidad + listacar.get(pos).getCantidad();
-                        int subtotal = cantidad * listacar.get(pos).getPreciocompra();
-                        listacar.get(pos).setCantidad(cantidad);
-                        listacar.get(pos).setSubtotal(subtotal);
-                    }else{
-                    item++;
-                    car Car = new car();
-                    Car.setItem(item);
-                    Car.setIdproducto(idp);
-                    Car.setNombre(p.getNombre());
-                    Car.setDescripcion(p.getDescripcion());
-                    Car.setFoto(p.getFoto());
-                    Car.setPreciocompra(p.getPrecio());
-                    Car.setCantidad(cantidad);
-                    Car.setSubtotal(cantidad * p.getPrecio());
-                    listacar.add(Car);
-                    }
-                }else{
-                    item++;
-                    car Car = new car();
-                    Car.setItem(item);
-                    Car.setIdproducto(idp);
-                    Car.setNombre(p.getNombre());
-                    Car.setDescripcion(p.getDescripcion());
-                    Car.setFoto(p.getFoto());
-                    Car.setPreciocompra(p.getPrecio());
-                    Car.setCantidad(cantidad);
-                    Car.setSubtotal(cantidad * p.getPrecio());
-                    listacar.add(Car);
+           case "buscar":
+               String nombre = request.getParameter("busqueda");
+               productos = pdao.buscar(nombre);
+               request.setAttribute("producto", productos);
+                 if (sesion.getAttribute("tipo").equals("administrador")) {  
+                    System.out.println("item2: "+sesion.getAttribute("tipo"));
+                    System.out.println("producto: "+ productos.size());
+                    request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
                 }
-                request.setAttribute("contador", listacar.size());
-                request.getRequestDispatcher("CtrProducto?accion=home").forward(request, response);
+                if(sesion.getAttribute("tipo").equals("Cliente")) {  
+                    request.getRequestDispatcher("vistas/Cliente.jsp").forward(request, response);
+                }
                 break;
                 
-                case "carrito":
-                    totalpagar=0;
-                    for(int i = 0; i <listacar.size(); i++){
-                        totalpagar = totalpagar + listacar.get(i).getSubtotal();
-                    }
-                    request.setAttribute("totalpagar", totalpagar);
-                    request.setAttribute("car", listacar);
-                    
-                    if (sesion.getAttribute("tipo").equals("Administrador")) {  
+           case "agregarcarrito":
+               int pos = 0;
+               cantidad = 1;
+               idp =Integer.parseInt(request.getParameter("id"));
+               p = pdao.listarId(idp);
+               if(listacar.size() > 0 ){
+                   for(int i= 0; i < listacar.size(); i++){
+                       if(idp == listacar.get(i).getIdproducto()){
+                        pos =i;   
+                       }
+                   }
+                   if(idp == listacar.get(pos).getIdproducto()){
+                       cantidad = cantidad + listacar.get(pos).getCantidad();
+                       int subtotal = cantidad * listacar.get(pos).getPreciocompra();
+                       listacar.get(pos).setCantidad(cantidad);
+                       listacar.get(pos).setSubtotal(subtotal);
+                   }else{
+                   item++;
+                   car Car = new car();
+                   Car.setItem(item);
+                   Car.setIdproducto(idp);
+                   Car.setNombre(p.getNombre());
+                   Car.setDescripcion(p.getDescripcion());
+                   Car.setFoto(p.getFoto());
+                   Car.setPreciocompra(p.getPrecio());
+                   Car.setCantidad(cantidad);
+                   Car.setSubtotal(cantidad * p.getPrecio());
+                   listacar.add(Car);
+               }
+               }else{
+                  item++;
+                   car Car = new car();
+                   Car.setItem(item);
+                   Car.setIdproducto(idp);
+                   Car.setNombre(p.getNombre());
+                   Car.setDescripcion(p.getDescripcion());
+                   Car.setFoto(p.getFoto());
+                   Car.setPreciocompra(p.getPrecio());
+                   Car.setCantidad(cantidad);
+                   Car.setSubtotal(cantidad * p.getPrecio());
+                   listacar.add(Car);
+               }
+               request.setAttribute("contador", listacar.size());
+               request.getRequestDispatcher("CtrProducto?accion=home").forward(request, response);
+               break;
+               
+               case "carrito":
+                   totalpagar=0;
+                   for(int i = 0; i <listacar.size(); i++){
+                       totalpagar = totalpagar + listacar.get(i).getSubtotal();
+                   }
+                   request.setAttribute("totalpagar", totalpagar);
+                   request.setAttribute("car", listacar);
+                   
+                   if (sesion.getAttribute("tipo").equals("Administrador")) {  
                     System.out.println("item2: "+sesion.getAttribute("tipo"));
                     System.out.println("producto: "+ productos.size());
                     request.getRequestDispatcher("vistas/carrito.jsp").forward(request, response);
                 }
                 if(sesion.getAttribute("tipo").equals("Cliente")) {  
-                    request.getRequestDispatcher("vistas/carrito.jsp").forward(request, response);
+                    request.getRequestDispatcher("vistas/Carrito_Cliente.jsp").forward(request, response);
                 }
-                break;
-                case "Delete":
-                    int idproducto = Integer.parseInt(request.getParameter("idp"));
-                    for (int i = 0; i < listacar.size(); i++){
-                        if (listacar.get(i).getIdproducto() == idproducto){
-                            listacar.remove(i);
-                        }
-                    }
-                    break;
-                case "ActualizarCantidad":
-                    int idpro = Integer.parseInt(request.getParameter("idp"));
-                    int can = Integer.parseInt(request.getParameter("Cantidad"));
-                    for (int i = 0; i < listacar.size(); i++){
-                        if (listacar.get(i).getIdproducto() == idpro){
-                            listacar.get(i).setCantidad(can);
-                            int st = listacar.get(i).getPreciocompra() * can;
-                            listacar.get(i).setSubtotal(st);
-                        }
-                    }
-                    break;
+               break;
+               case "Delete":
+                   int idproducto = Integer.parseInt(request.getParameter("idp"));
+                   for (int i = 0; i < listacar.size(); i++){
+                       if (listacar.get(i).getIdproducto() == idproducto){
+                           listacar.remove(i);
+                       }
+                   }
+                   break;
+               case "ActualizarCantidad":
+                   int idpro = Integer.parseInt(request.getParameter("idp"));
+                   int can = Integer.parseInt(request.getParameter("Cantidad"));
+                   for (int i = 0; i < listacar.size(); i++){
+                       if (listacar.get(i).getIdproducto() == idpro){
+                           listacar.get(i).setCantidad(can);
+                           int st = listacar.get(i).getPreciocompra() * can;
+                           listacar.get(i).setSubtotal(st);
+                       }
+                   }
+                   break;
                 case "Comprar":
                     totalpagar = 0;
                     if (cantidad == 0){
@@ -250,14 +260,16 @@ public class CtrProducto extends HttpServlet {
                     break;
                 case "Eliminar":
                     id = Integer.parseInt(request.getParameter("id"));
-                    pdao.eliminarpro(id);
-                    list = pdao.listar();
+                    dao.eliminarpro(id);
+                    list = dao.listar();
                     request.setAttribute("producto", list);
                     System.out.println("elimino");
                     request.getRequestDispatcher("vistas/ListarProducto.jsp").forward(request, response);
                     break;
                 case "pedido":
+                    System.out.println("entro pedido");
                     idcli = request.getParameter("idus");
+                    System.out.println("id cliente: "+idcli);
                     estado = "En proceso";
                     monto = totalpagar;
                     pago = 1;
@@ -267,23 +279,80 @@ public class CtrProducto extends HttpServlet {
                     ped.setFecha(fecha);
                     ped.setEstado(estado);
                     pedao.crear(ped);
-                    for (int i = 0; i <listacar.size(); i++) {
-                        DetallePedido depe = new DetallePedido();
-                        depe.setIdpedido(idp);
-                        depe.setIdproducto(listacar.get(i).getIdproducto());
-                        depe.setNombre(listacar.get(i).getNombre());
-                        depe.setCantidad(listacar.get(i).getCantidad());
-                        depe.setPrecio(listacar.get(i).getPreciocompra());
-                        dpdao.crear(depe);
-                    }
                     int idp = pedao.listarId();
+                    System.out.println("id pedido: "+idp);
+                    if (listacar.size() > 0) {
+                        for (int i = 0; i < listacar.size(); i++) {
+                            DetallePedido depe = new DetallePedido();
+                            depe.setIdpedido(idp);
+                            depe.setIdproducto(listacar.get(i).getIdproducto());
+                            depe.setNombre(listacar.get(i).getNombre());
+                            depe.setCantidad(listacar.get(i).getCantidad());
+                            depe.setPrecio(listacar.get(i).getPreciocompra());
+                            dpdao.crear(depe);
+                        }
+                        Properties propiedad = new Properties();
+                        propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+                        propiedad.setProperty("mail.smtp.starttls.enable", "true");
+                        propiedad.setProperty("mail.smtp.port", "587");
+                        propiedad.setProperty("mail.smtp.auth", "true");
+
+                        Session sesion1 = Session.getDefaultInstance(propiedad);
+                        String correoenvio = "ronnier0828@gmail.com";
+                        String contrasena = "hlvkpprnlfiuviii";
+                        String destinatario = "rodriguezronnie28@outlook.com";
+                        String asunto = "pedido generado";
+                        String mensaje = "Su pedido ha sido realizado";
+
+                        MimeMessage mail = new MimeMessage(sesion1);
+
+                        try {
+
+                            mail.setFrom(new InternetAddress(correoenvio));
+                            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+                            mail.setSubject(asunto);
+                            mail.setText(mensaje);
+
+                            Transport transporte = sesion1.getTransport("smtp");
+                            transporte.connect(correoenvio, contrasena);
+                            transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+                            transporte.close();
+
+                            System.out.println("correo enviado");
+
+                        } catch (Exception e) {
+                            System.out.println("no envio el mensaje: " + e);
+                        }
+                        listacar.removeAll(listacar);
+                        request.getRequestDispatcher("CtrProducto?accion=carrito").forward(request, response);
+                    }else{
+                        request.setAttribute("contador", listacar.size());
+                        request.getRequestDispatcher("CtrProducto?accion=home").forward(request, response);
+                    }
+                    break;
+                case "Ayuda":
+                    File documento = new File("C:\\Users\\HPLAPTOP01\\Downloads\\LABORATORIOnARQUITECTURAnDEnSOFTWARE___94632e0711bdfc3___.pdf");
+                    try{
+                        FileInputStream archivo = new FileInputStream(documento.getPath());
+                        int tamanoinput = archivo.available();
+                        byte[] datosPDF = new byte[tamanoinput];
+                        archivo.read(datosPDF, 0, tamanoinput);
+                        response.setHeader("Content-disposition", "inline; filename=instalacion_tomcat.pdf");
+                        response.setContentType("application/pdf");
+                        response.setContentLength(tamanoinput);
+                        response.getOutputStream().write(datosPDF);
+                        archivo.close();
+                        
+                    }catch(Exception e){
+                        System.out.println("No pudo abrir archivo: "+e);
+                    }
                     break;
             default:
                 productos = pdao.listar();
                 System.out.println("usuario: "+sesion.getAttribute("tipo"));
                 request.setAttribute("producto", productos);
                 if (sesion.getAttribute("tipo") != null){
-                    if (sesion.getAttribute("tipo").equals("Administrador")) {
+                   if (sesion.getAttribute("tipo").equals("Administrador")) {
                         request.getRequestDispatcher("vistas/Administrador.jsp").forward(request, response);
                     }
                     if (sesion.getAttribute("tipo").equals("Cliente")) {

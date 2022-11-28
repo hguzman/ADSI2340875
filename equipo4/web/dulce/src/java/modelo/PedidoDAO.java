@@ -29,11 +29,11 @@ public class PedidoDAO {
             if (con != null) {
                 System.out.println("Se ha establecido una conexion a la base de datos dao listar" + "\n");
             }
-            ps = con.prepareStatement("insert into pedido (idcliente, fecha, monto, estado)Values(?,?,?,?,?)");
+            ps = con.prepareStatement("insert into pedido (idcliente, fecha, monto, estado)Values(?,?,?,?)");
             ps.setString(1, pe.getIdcliente());
             ps.setString(2, pe.getFecha());
-            ps.setInt(4, pe.getMonto());
-            ps.setString(5, pe.getEstado());
+            ps.setInt(3, pe.getMonto());
+            ps.setString(4, pe.getEstado());
             ps.executeUpdate();
         }catch(Exception e){
             System.out.println("Error al insertar los datos: "+e);
@@ -49,11 +49,11 @@ public class PedidoDAO {
             if (con != null) {
                 System.out.println("Se ha establecido una conexion a la base de datos dao listar" + "\n");
             }
-            ps = con.prepareStatement("select max (idpedido) from pedido");
+            ps = con.prepareStatement("select max(idpedido) from pedido");
             rs = ps.executeQuery();
             while (rs.next()){
                 idp = rs.getInt(1);
-            }
+           }
         }catch(Exception e){
             System.out.println("Error al listar los productos: "+e);
         }
