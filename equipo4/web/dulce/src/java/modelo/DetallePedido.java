@@ -44,7 +44,7 @@ public class DetallePedido {
     public void setIdproducto(int idproducto) {
         this.idproducto = idproducto;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
