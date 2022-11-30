@@ -16,7 +16,6 @@ import java.sql.Date;
 public class Pedido {
     private int idpedido;
     private String idcliente;
-    
     private String fecha;
     private int monto;
     private String estado;
@@ -27,7 +26,7 @@ public class Pedido {
     public Pedido(int idpedido, String idcliente, String fecha, int monto, String estado) {
         this.idpedido = idpedido;
         this.idcliente = idcliente;
-        
+       
         this.fecha = fecha;
         this.monto = monto;
         this.estado = estado;

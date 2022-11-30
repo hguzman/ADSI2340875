@@ -1,0 +1,19 @@
+main{
+	width: 80%;
+	margin: auto;
+}
+header{
+	width: 100%;
+}
+#cua1{
+	border-radius: 50px;
+}
+#cua2{
+	border-radius: 50px;
+}
+#cont1{
+	border-radius: 50px;
+}
+.con1{
+	margin-top: 80px;
+}

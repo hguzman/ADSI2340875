@@ -29,14 +29,15 @@
         
         
     %>
-    <body style="background: buttonface;">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <body style="background: linen;">
+        <nav class="navbar navbar-expand-lg navbar-dark " style="background: deeppink">
             <div class="container-fluid">
+               
                 <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                DULCERIA
-                            </a>
+                           <a class="nav-link active dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            DULCERIA
+                           </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/dulce/CtrProducto?accion=Listar"  data-bs-target="#item"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Productos</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Categorias</a></li>
@@ -57,6 +58,9 @@
                         
                         <li class="nav-item">
                             <a class="nav-link" href="/dulce/CtrProducto?accion=carrito"><i class="fa fa-shopping-cart">(<label style="color: darkorange">${contador}</label>)</i>Carrito </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" href="/dulce/CtrProducto?accion=Ayuda"><img src="/dulce/img/icono.jpg" width="20" height="20">Ayuda </a>
                         </li>
                     </ul>
                     <form class="d-flex" action="/dulce/CtrProducto?accion=buscar" method="POST">
@@ -85,35 +89,38 @@
                 </div>
             </div>
         </nav>
-        <div class="container mt-2">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                                                 
+       <div class="container mt-2">
+           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/dulce/img/principal.jpg" class="d-block w-100 " alt="..." height="400" >
-            </div>
-            <div class="carousel-item">
+              <div class="carousel-item active">
+                  <img src="/dulce/img/principal.jpg" class="d-block w-100 " alt="..." height="400" >
+              </div>
+              <div class="carousel-item">
                 <img src="/dulce/img/gomitas.jpg" class="d-block w-100" alt="..." height="400">
-            </div>
-            <div class="carousel-item">
-                    <img src="/dulce/img/galletas_muu.jpg" class="d-block w-100" alt="..." height="400">
-                </div>
+              </div>
+              <div class="carousel-item">
+                  <img src="/dulce/img/galletas_muu.jpg" class="d-block w-100" alt="..." height="400">
+              </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
             </button>
         </div>
         <div>
             <div class="row mt-5">
+                
+                
                 <c:forEach var="p" items="${producto}" >
                     <div class="col-sm-4 ">
                         <div class="card row mt-2 " style="margin-left: 2px">
@@ -121,9 +128,9 @@
                                 <label>${p.getNombre()}</label>
                             </div>
                             <div class="card-body text-center" style="background: gainsboro">
-                                <%-- <img src="ControlImg?id=${p.getId()}" width="200" height="180"></br> --%>
-                                <img src="${p.getFoto()}" width="200" height="180"></br> 
-                                <i>$.${p.getPrecio()}</i>
+                               <%-- <img src="ControlImg?id=${p.getId()}" width="200" height="180"></br> --%>
+                               <img src="${p.getFoto()}" width="200" height="180"></br> 
+                               <i>$.${p.getPrecio()}</i>
                             </div>
                             <div class="card-footer text-center" style="background: darkgrey">
                                 <label>${p.getDescripcion()}</label>
@@ -137,7 +144,10 @@
                 </c:forEach>
                 
             </div>
-        </div>
+        
+        </div>              
+         
+        
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -145,3 +155,4 @@
     </body>
 
 </html>
+
