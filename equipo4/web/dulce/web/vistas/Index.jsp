@@ -16,7 +16,7 @@
         <title>JSP Page</title>
     </head>
     <%
-        response.sendRedirect("/dulce/CtrProducto?accion=home");
+      response.sendRedirect("/dulce/CtrProducto?accion=home");
     %>
     <body>
         

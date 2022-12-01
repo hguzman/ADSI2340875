@@ -1,8 +1,9 @@
 <%-- 
-    Document   : ListarProducto
-    Created on : 11/11/2022, 08:51:30 AM
+    Document   : detalle_cliente
+    Created on : 30/11/2022, 09:15:58 AM
     Author     : HPLAPTOP01
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -94,7 +95,7 @@
             <table class="table" >
                 <thead class="thead-dark border">
                     <tr>
-                        <th scope="col" colspan="6" class ="text-center border">Productos</th>
+                        <th scope="col" colspan="6" class ="text-center-ligth border">Detalle productos</th>
                         <th scope="col" class ="text-center border"> <a class="btn btn-primary ml-2" href="/dulce/vistas/crearproducto.jsp"><i class="fa fa-user-plus" aria-hidden ="true"></i></a></th>
                     </tr>
                     <tr>
@@ -112,12 +113,12 @@
 
                     <c:forEach var="pro" items="${producto}">
                         <tr>
-                            <th scope="row" class="border">${pro.getId()}</th>
+                            <th scope="row" class="border">${pro.getIddetalle()}</th>
+                            <td scope="row" class="border">${pro.getIdpedido()}</td>
+                            <td scope="row" class="border"><img src="${pro.getIdproducto()}" width="100" height="80" alt="imagen del producto"</td>
                             <td class="border">${pro.getNombre()}</td>
-                            <td class="border"><img src="${pro.getFoto()}" width="100" height="80" alt="imagen del producto"</td>
-                            <td class="border">${pro.getDescripcion()}</td>
+                            <td class="border">${pro.getCantidad()}</td>
                             <td class="border">${pro.getPrecio()}</td>
-                            <td class="border">${pro.getStock()}</td>
                             
                             
                             
@@ -138,4 +139,3 @@
         <script src="/dulce/JS/eliminar_pro.js" type="text/javascript"></script>
     </body>
 </html>
-

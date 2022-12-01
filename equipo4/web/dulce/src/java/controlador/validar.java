@@ -105,14 +105,14 @@ public class validar extends HttpServlet {
                 }
                 
             }else{
-                response.sendRedirect("/dulce/vistas/login.jsp?ingreso=0");
+                 response.sendRedirect("/dulce/vistas/login.jsp?ingreso=0");
             }
         }
         if(accion.equalsIgnoreCase("Registrarse")){
-                response.sendRedirect("/dulce/vistas/CrearUsuario.jsp?ingreso=0");
+                 response.sendRedirect("/dulce/vistas/CrearUsuario.jsp?ingreso=0");
             
         }
-        
+       
     }
 
     /**

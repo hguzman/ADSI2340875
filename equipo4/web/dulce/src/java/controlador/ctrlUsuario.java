@@ -33,9 +33,9 @@ public class ctrlUsuario extends HttpServlet {
      * @throws ServletException if a s ervlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-        usuarioDAO dao = new usuarioDAO();
-        String id, nom, ape, dir, tel, cor, usu, pas, tip;
-            
+       usuarioDAO dao = new usuarioDAO();
+       String id, nom, ape, dir, tel, cor, usu, pas, tip;
+           
             protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
