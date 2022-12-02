@@ -1,0 +1,53 @@
+body{
+    background-color: white;
+    
+}
+
+main{
+    padding-top: 80px;
+    text-align: center;  
+    margin: auto;  
+    background-color: #eceef3;
+}
+
+hr{
+    width: 500px;
+    border-color: black;
+}
+
+h1{
+ font-size: 30px;
+}
+
+section{
+    background-color:  #eceef3;
+    margin: auto;
+    padding-top: 80px;
+}
+ul{
+    list-style: none;
+    
+}
+
+li{
+    font-size: x-large;
+}
+
+#azul{
+    padding-top: 80px;
+    font-size: x-large;
+    text-align: center;
+}
+
+#hola{
+    font-size: x-large;
+}
+
+#nesuko{
+    padding-top: 80px;
+}
+
+p{
+    font-size: x-large;  
+}
+
