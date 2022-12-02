@@ -1,0 +1,127 @@
+body{
+    background: darkgray;
+}
+
+h3{
+    color: hsl(0, 93%, 49%);
+}
+
+.principal{
+height: 1100px;
+width: 900px;
+background: white;
+margin-top: 20px;
+padding-top: 30px;
+padding-bottom: 30px;
+font-family: cursive;
+
+}
+
+.margen{
+  border: 2px solid blue;
+  height: 1099px;
+  width: 850px;
+  
+}
+
+
+.subtitles{
+  margin-top: 80px;
+}
+
+h4{
+  margin-top: 90px;
+
+}
+table,td,tr {
+	border-collapse: collapse;
+  border: black 1px solid;
+  text-align: center;
+  margin: 10px;
+  margin-top: 200px;
+ 
+}
+.tit{
+  background: gray;
+}
+
+.lista,.list{
+  margin: 20px;
+  text-align: center;
+  list-style-type: none;
+  display: inline;
+}
+
+.subIzq{
+  margin-top: 20px;
+  margin-right: 500px;
+  
+}
+
+.parrafos2{
+  margin-top: 10px;
+  margin-left: 50px;
+  text-align: left;
+}
+
+.subIzq3{
+  margin-right: 250px;
+}
+
+#tbl2{
+  border-collapse: collapse;
+  border: black 1px solid;
+  text-align: center;
+  margin-top: 10px;
+  margin-right: 180px;
+
+}
+
+.cab{
+  background: darkcyan;
+  
+}
+
+.subIzq4{
+  margin-top: 60px;
+  margin-right: 460px;
+}
+
+.subIzq5{
+  margin-top: 20px;
+  margin-right: 420px;
+}
+
+ul,li{
+  text-align: left;
+  margin-left: 20px;
+}
+
+.tabla3{
+  margin-top: 10px;
+  margin-right: 150px;
+  width: 70%;
+	height: 180px;
+}
+
+#tbl4,.par,.par2{
+  height: 65px;
+  margin-top: 10px;
+  text-align: center;
+  border: darkcyan 1px solid;
+}
+
+.subIzq6{
+  margin-right: 388px;
+}
+
+#imageU{
+    margin-top: 40px;
+}
+
+
+#subIzq7{
+  margin-top: 50px;
+  margin-right: 420px;
+}
+
