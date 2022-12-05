@@ -27,12 +27,12 @@
     <body style="background: buttonface">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                
+               
                 <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                           <a class="nav-link active dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             DULCERIA
-                            </a>
+                           </a>
                             
                         </li>
                     </ul>
@@ -76,7 +76,7 @@
             </div>
         </nav>
                         
-        <div class="container mt-2">
+       <div class="container mt-2">
             <div class="row">
                 
                 
@@ -87,9 +87,9 @@
                                 <label>${p.getNombre()}</label>
                             </div>
                             <div class="card-body text-center">
-                                <%-- <img src="ControlImg?id=${p.getId()}" width="200" height="180"></br> --%>
-                                <img src="${p.getFoto()}" width="200" height="180"></br> 
-                                <i>$.${p.getPrecio()}</i>
+                               <%-- <img src="ControlImg?id=${p.getId()}" width="200" height="180"></br> --%>
+                               <img src="${p.getFoto()}" width="200" height="180"></br> 
+                               <i>$.${p.getPrecio()}</i>
                             </div>
                             <div class="card-footer text-center">
                                 <label>${p.getDescripcion()}</label>
@@ -104,8 +104,8 @@
                 
             </div>
         </div>
-
-        
+                        
+         
         
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

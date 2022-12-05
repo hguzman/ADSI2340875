@@ -21,14 +21,14 @@
         <title>Crear Producto</title>
     </head>
     <body>
-        
+      
         <div class="container mt-2 border">
                 <div class="row">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-8 border mt-2 mb-2">
                         <form action="../CtrProducto?accion=agregar" class="formulario" id="formulario">
-                            
-                                
+                          
+                               
                                 <!-- Nombre-->
                                 <div class ="col formulario_grupo" id="grupo_nombre">
                                     <label for="nombre" class="formulario__label" >Nombre</label>
@@ -39,8 +39,8 @@
                                     
                                 </div>
                             
-                            
-                            
+                           
+                             
                                 <!-- Descripcion-->
                                 <div class ="col formulario_grupo" id="grupo_descipcion">
                                     <label for="descripcion" class="formulario__label" >Descripcion</label>
@@ -60,8 +60,8 @@
                                     </div>
                                     
                                 </div>
-                                
-                                <!--Foto-->
+                               
+                                 <!--Foto-->
                                 <div class ="col formulario_grupo" id="grupo_foto">
                                     <label for="foto" class="formulario__label" >Foto</label>
                                     <div class="formulario__grupo-input">
@@ -71,7 +71,7 @@
                                     </div>
                                     
                                 </div>
-                            
+                             
                                 <!-- Stock-->
                                 <div class ="col formulario_grupo" id="grupo_stock">
                                     <label for="stock" class="formulario__label" >Stock</label>
@@ -82,16 +82,17 @@
                                     
                                 </div>
                                 
-    
+     
                                 <!-- botones-->
                                 <div class ="col mt-2 text-center formulario__grupo-btn-enviar">
                                     <button type="submit" class="btn btn-primary formulario__btn" name="accion" value="agregar">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button> 
                                     <a class="btn btn-danger formulario__btn" name="regresar" href="/dulce/CtrProducto?accion=Listar">Regresar <i class="fa fa-undo" aria-hidden="true"></i></a>
                                     <p class="formulario_mensaje-exito" id="formulario_mensaje-exito">Informacion enviada exitosamente</p>
                                 </div>
-                                
+                                                               
                             </div>
-                        </form> 
+                        </form>  
+
                     </div>
                 </div>
         </div>
