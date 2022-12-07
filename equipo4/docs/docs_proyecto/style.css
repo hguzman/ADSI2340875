@@ -1,0 +1,20 @@
+
+ .top{
+  margin-top: 180px;
+}
+
+
+tr{
+  background-color: white;
+  
+}
+
+#imagen2{
+  background-image: url("imagen/fondo.jpg");
+}
+
+#boton{
+  border: solid 2px black;
+  margin-left: 70px;
+}
+

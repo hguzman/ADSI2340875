@@ -1,0 +1,39 @@
+
+img{
+
+    margin-top: 5px;
+  }
+  h1{
+  text-align: center;
+  color: rgb(3, 3, 3);
+  
+  }
+  h2{
+    text-align: center;
+    color: rgb(0, 0, 0);
+  }
+  
+  h3{
+   
+   margin-top: 10px;
+   text-align: center;
+   color: rgb(0, 0, 0);
+  }
+  table, td, th{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 1000px;
+  margin-left: 190px;
+  text-align: center;
+  margin-top: 60px;
+  }
+  th{
+    background-color:gray
+  }
+  
+    
+    
+  
+     
+  
+  
