@@ -1,45 +1,37 @@
-hr {
-  height: 2px;
-  width: 50%;
-  background-color: black;
-}
-
-
-header{
-  background-color: #7C7A7A;
-  color: black;
-  padding: 2px;
-}
-
-section{
-  background-color: #7C7A7A ;
-  padding: 4px;
-  font-size: 18px;
-
-}
-
-p{
-  margin-left: 30px;
-}
-
-table{
-  width: 50%;
-  border: 3px solid #7C7A7A;
-  color: black;
-  padding: auto;
-}
-
-
-th, td{
-  border: 3px solid #7C7A7A;
-  text-align: left;
-}
-
-table table-dark{
-  padding: 40%;
-}
-
-
-
-
+main{
+    margin: 3px;
+    border-color: #424643;
+    
+  }
   
+  hr {
+    height: 10px;
+    width: 60%;
+    background-color: black;
+    
+  }
+  
+  
+  header{
+    background-color: grey;
+    color: black;
+    padding: 2px;
+  }
+  
+  section{
+    background-color: grey ;
+    padding: 4px;
+    font-size: 18px;
+  
+  }
+  
+  p{
+    margin-left: 30px;
+  }
+  
+  table{
+    width: 50%;
+    border: 3px solid #424643 ;
+    color: black;
+    padding: auto;
+  }
